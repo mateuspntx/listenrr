@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 
@@ -16,12 +17,15 @@ const Listenrr = ({ Component, pageProps }) => {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <button onClick={darkMode.enable}>DARK MODE</button>
-      <button onClick={darkMode.disable}>LIGHT MODE</button>
-      {isMounted && <Component {...pageProps} />}
-    </ThemeProvider>
+    <>
+      <Head>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        {isMounted && <Component {...pageProps} />}
+        <GlobalStyle />
+      </ThemeProvider>
+    </>
   )
 }
 

@@ -1,0 +1,20 @@
+<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Turn Light Mode">
+<g id="sun" clip-path="url(#clip0)">
+<path id="Vector" d="M12.47 17C15.2314 17 17.47 14.7614 17.47 12C17.47 9.23858 15.2314 7 12.47 7C9.70855 7 7.46997 9.23858 7.46997 12C7.46997 14.7614 9.70855 17 12.47 17Z" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M12.47 1V3" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M12.47 21V23" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M4.68994 4.22L6.10994 5.64" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M18.83 18.36L20.25 19.78" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M1.46997 12H3.46997" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M21.47 12H23.47" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M4.68994 19.78L6.10994 18.36" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M18.83 5.64L20.25 4.22" stroke="#848484" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="24" height="24" fill="white" transform="translate(0.469971)"/>
+</clipPath>
+</defs>
+</svg>
