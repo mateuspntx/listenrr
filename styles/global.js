@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   * {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -13,8 +13,9 @@ export default createGlobalStyle`
   body {
     background: ${props => props.theme.colors.background};
     font-size: 62.5%;
-    color: ${props => props.theme.colors.text};
-    width: 100vw;
+    color: ${props => props.theme.colors.primary};
+    width: 82.5%;
+    max-width: 1920px;
     height: 100vh;
   }
 
@@ -27,5 +28,10 @@ export default createGlobalStyle`
       opacity: 0;
     }
   }
+
+  @media (min-width: 1920px) {
+    body {
+      width: 1920px;
+    }
 
 `;
