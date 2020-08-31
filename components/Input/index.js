@@ -1,8 +1,8 @@
 import { InputStyle } from './styles';
 
-const Input = ({ name, ...rest }) => {
+const Input = ({ type, name, ...rest }) => {
   return (
-    <InputStyle type="text" id={name} {...rest}></InputStyle>
+    <InputStyle type={type} id={name} {...rest}></InputStyle>
   )
 }
 

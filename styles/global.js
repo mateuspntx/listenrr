@@ -31,7 +31,7 @@ export default createGlobalStyle`
 
   @media (min-width: 1920px) {
     body {
-      width: 1920px;
+      width: 82vw;
     }
 
 `;
