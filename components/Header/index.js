@@ -3,13 +3,18 @@ import ThemeSwitcher from '../ThemeSwitcher'
 
 import { Container, LogoText } from './styles';
 
+const ThemeSwitcherStyles = {
+  marginRight: '0px',
+  marginTop: '15px'
+}
+
 const Header = (props) => {
   return (
     <>
     <Container>
       <LogoText>Listenrr</LogoText>
       <Input name="search" placeholder="What radio are you looking for?"/>
-      <ThemeSwitcher/>
+      <ThemeSwitcher style={ThemeSwitcherStyles}/>
     </Container>
     { props.children }
     </>
