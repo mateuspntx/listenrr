@@ -15,7 +15,7 @@ export default createGlobalStyle`
     font-size: 62.5%;
     color: ${props => props.theme.colors.primary};
     width: 82.5%;
-    max-width: 1920px;
+    
     height: 100vh;
   }
 

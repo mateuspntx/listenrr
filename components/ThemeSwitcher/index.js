@@ -7,9 +7,9 @@ const ThemeSwitcher = () => {
     <>
       { 
       darkMode.value ? 
-      <img src="../../assets/images/lightmode-icon.svg" onClick={darkMode.disable}/>
+      <img style={{marginRight: '0px'}} src="../../assets/images/lightmode-icon.svg" onClick={darkMode.disable}/>
       :
-      <img src="../../assets/images/darkmode-icon.svg" onClick={darkMode.enable}/> 
+      <img style={{marginRight: '0px'}} src="../../assets/images/darkmode-icon.svg" onClick={darkMode.enable}/> 
       }
     </>
   )

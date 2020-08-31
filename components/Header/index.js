@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import Input from '../Input';
 import ThemeSwitcher from '../ThemeSwitcher'
 
@@ -10,7 +9,7 @@ const Header = (props) => {
     <Container>
       <LogoText>Listenrr</LogoText>
       <Input name="search" placeholder="What radio are you looking for?"/>
-      <ThemeSwitcher />
+      <ThemeSwitcher/>
     </Container>
     { props.children }
     </>
