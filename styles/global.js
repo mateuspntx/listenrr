@@ -15,8 +15,9 @@ export default createGlobalStyle`
     font-size: 62.5%;
     color: ${props => props.theme.colors.primary};
     width: 82.5%;
-    
     height: 100vh;
+    transition: background-color .5s, color .5s,
+                color .5s, color .5s;
   }
 
   .FadeInAnimation05s {
@@ -33,5 +34,5 @@ export default createGlobalStyle`
     body {
       width: 82vw;
     }
-
+}
 `;
