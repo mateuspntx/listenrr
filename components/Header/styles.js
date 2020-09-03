@@ -14,4 +14,8 @@ export const LogoText = styled.div`
   /*margin-left: 9.50%;*/
   margin-left: 15px;
   transition: color .5s, color .5s;
+
+  @media (max-width: 615px) {
+    margin: 0;
+  }
 `;

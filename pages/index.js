@@ -6,7 +6,7 @@ import AppContainer from '../components/AppContainer';
 
 const Filters = styled.div`
   margin-top: 6rem;
-  width: 1582px;
+  /*width: 1582px;*/
 
   h1 {
     font-size: 2.6rem;
@@ -23,10 +23,10 @@ const Filters = styled.div`
 `;
 
 const RowContainer = styled.div`
-  margin: 1.5rem 0;
-  display: inline-flex;
+  margin: 1.5rem 0px;
+  display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  grid-gap: 3.5rem 7%;
 `
 
 const Home = () => {
@@ -41,7 +41,7 @@ const Home = () => {
           <h3>Explore</h3>
         </Filters>
       </Header>
-      <RowContainer >
+      <RowContainer > 
         <RadioCard />
         <RadioCard />
         <RadioCard />
