@@ -28,6 +28,8 @@ export const Title = styled.h1`
     font-size: 1.7rem;
     margin-top: 1rem;
     font-weight: 500;
+    transition: color .5s;
+    color: ${props => props.theme.colors.primary}
 `
 
 export const Label = styled.h2`
