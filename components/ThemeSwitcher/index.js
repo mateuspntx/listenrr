@@ -1,4 +1,5 @@
 import useDarkMode from 'use-dark-mode';
+import { lightModeIcon, darkModeIcon } from '../../utils/Icons';
 
 const ThemeSwitcher = (props) => {
   const darkMode = useDarkMode(true)
@@ -7,9 +8,9 @@ const ThemeSwitcher = (props) => {
     <>
       { 
       darkMode.value ? 
-      <img {...props} src="../../assets/images/lightmode-icon.svg" onClick={darkMode.disable}/>
+      <img {...props} src={lightModeIcon} onClick={darkMode.disable}/>
       :
-      <img {...props} src="../../assets/images/darkmode-icon.svg" onClick={darkMode.enable}/> 
+      <img {...props} src={darkModeIcon} onClick={darkMode.enable}/> 
       }
     </>
   )

@@ -27,6 +27,7 @@ const RowContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   grid-gap: 3.5rem 7%;
+  margin-bottom: 10rem;
 `
 
 const Home = () => {

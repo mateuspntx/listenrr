@@ -1,6 +1,6 @@
 import Input from '../Input';
 import ThemeSwitcher from '../ThemeSwitcher'
-
+import { searchIcon } from '../../utils/Icons';
 import { Container, LogoText } from './styles';
 
 const ThemeSwitcherStyles = `
@@ -17,7 +17,7 @@ const SearchInputStyles = {
   marginTop: '15px',
   marginLeft: '0px',
   width: '30rem',
-  background: 'url(\'./assets/images/search-icon.svg\')',
+  background: `url(${searchIcon})`,
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'right',
   backgroundOrigin: 'content-box',
