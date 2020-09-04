@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const backgroundGradient = `
-  linear-gradient(90deg,#232f35 0%,#15161f 100%)
+  linear-gradient(90deg,#232f35e3 0%,#15161fc4 100%)
 `
 
 export const Container = styled.div`
@@ -11,6 +11,7 @@ export const Container = styled.div`
   height: 50px;
   padding: 10px;
   background: ${backgroundGradient};
+  backdrop-filter: saturate(180%) blur(10px);
   box-shadow: 0px 22px 20px 20px rgb(0 0 0 / 73%);
   display: flex;
   align-items: center;

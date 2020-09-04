@@ -11,6 +11,11 @@ export const Cover = styled.div`
     justify-content: center;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+    img {
+        width: 3rem;
+        filter: drop-shadow(0 0 5px rgba(0,0,0,.555));
+    }
 `
 export const Title = styled.h1`
     font-size: 1.7rem;
