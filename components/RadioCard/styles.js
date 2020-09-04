@@ -41,7 +41,8 @@ export const Label = styled.h2`
 
 export const RadioCardDiv = styled.div`
     transition: .5s;
-
+    cursor: pointer;
+    
     &:hover {
         transform: scale(1.03);
     }
