@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const playBtnHover = '${RadioCardDiv}:hover img {opacity: 1;}'
 
@@ -38,6 +38,11 @@ export const Label = styled.h2`
 `
 
 export const RadioCardDiv = styled.div`
+    transition: .5s;
+
+    &:hover {
+        transform: scale(1.03);
+    }
 
     ${Cover}
     ${Title}
