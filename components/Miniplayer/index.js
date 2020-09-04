@@ -1,5 +1,3 @@
-import { Container, RadioInfo, PlayerActions } from './styles';
-
 import {
   playIcon, 
   pauseIcon, 
@@ -9,12 +7,16 @@ import {
   externalIcon
 } from '../../utils/Icons';
 
+import { Container, RadioInfo, PlayerActions, Thumb } from './styles';
+
 const Miniplayer = () => {
   return (
     <Container>
       <RadioInfo>
-        <h3>ChilledCow</h3>
-        <h4>7,835 people listening now</h4>
+        <div css={Thumb} />
+        <h3>ChilledCow
+        <span>7,835 people listening now</span>
+        </h3>
       </RadioInfo>
       <PlayerActions>
         <img src={pauseIcon} alt="Pause"/>

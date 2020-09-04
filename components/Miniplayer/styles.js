@@ -11,20 +11,54 @@ export const Container = styled.div`
   height: 50px;
   padding: 10px;
   background: ${backgroundGradient};
-
+  box-shadow: 0px 22px 20px 20px rgb(0 0 0 / 73%);
   display: flex;
+  align-items: center;
+
+  @media (max-width: 615px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 `
 
 export const RadioInfo = styled.div`
+  display: flex;
+  grid-template-columns: repeat(3, 3rem);
+  grid-gap: 0 10px;
+  align-items: center;
+    
+
   h3 {
     color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: column;
   }
 
-  h4 {
+  span {
     color: #8B9CA7;
+    font-size: .8rem;
   }
+
 `
 
 export const PlayerActions = styled.div`
+  img {
+    padding-left: 15px;
+  }
 
+  @media (max-width: 615px) {
+    img {
+      padding-left: 10px;
+    }
+  }
+`
+export const Thumb = `
+  width: 35px;
+  height: 35px;
+  background: url('/assets/images/cover.jpg'), #232f35;
+  background-size: cover;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
 `

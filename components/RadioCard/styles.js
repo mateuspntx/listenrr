@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Cover = styled.div`
-    background: url(${props => CSS.escape(props.cover)});
+    background: url(${props => CSS.escape(props.cover)}), #232f35;
     background-size: cover;
     background-position: center;
     width: 310px;
