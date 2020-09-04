@@ -1,5 +1,27 @@
 import useDarkMode from 'use-dark-mode';
+import styled, { keyframes } from 'styled-components';
 import { lightModeIcon, darkModeIcon } from '../../utils/Icons';
+
+const buttonAnimation = keyframes`
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  100% {
+    transform: translateY(3px);
+  }
+`
+
+const Button = styled.img`
+  &:hover {
+    animation: ${buttonAnimation} 1s ease-in-out infinite;
+    animation-direction: alternate;
+  }
+`
 
 const ThemeSwitcher = (props) => {
   const darkMode = useDarkMode(true)
@@ -8,9 +30,9 @@ const ThemeSwitcher = (props) => {
     <>
       { 
       darkMode.value ? 
-      <img {...props} src={lightModeIcon} onClick={darkMode.disable}/>
+      <Button {...props} src={lightModeIcon} onClick={darkMode.disable}/>
       :
-      <img {...props} src={darkModeIcon} onClick={darkMode.enable}/> 
+      <Button {...props} src={darkModeIcon} onClick={darkMode.enable}/> 
       }
     </>
   )
