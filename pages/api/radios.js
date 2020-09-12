@@ -23,7 +23,7 @@ export default async (req, res) => {
   } 
   
   catch {
-    return res.json(
+    return res.status(400).json(
       { message: 'Can\'t get radios list at this moment'
     });
   }

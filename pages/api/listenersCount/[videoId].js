@@ -16,7 +16,7 @@ export default async (req, res) => {
   } 
   
   catch {
-    return res.json(
+    return res.status(400).json(
       { message: 'Can\'t get listeners count at this moment'
     });
   }
