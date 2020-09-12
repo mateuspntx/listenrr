@@ -7,7 +7,15 @@ import {
   externalIcon
 } from '../../utils/Icons';
 
-import { Container, RadioInfo, PlayerActions, Thumb } from './styles';
+import { 
+  Container, 
+  RadioInfo, 
+  PlayerActions, 
+  Thumb, 
+  Volume,
+  SliderContainer, 
+  Slider 
+} from './styles';
 
 const Miniplayer = () => {
   return (
@@ -19,8 +27,14 @@ const Miniplayer = () => {
         </h3>
       </RadioInfo>
       <PlayerActions>
-        <img src={pauseIcon} alt="Pause"/>
-        <img src={volumeIcon} alt="Volume"/>
+        <img src={pauseIcon} alt="Pause"
+        />
+        <Volume>
+          <img src={volumeIcon} alt="Volume"/>
+          <SliderContainer>
+            <Slider type="range" />
+          </SliderContainer>
+        </Volume>
         <img src={chatIcon} alt="Chat"/>
         <img src={externalIcon} alt="Channel"/>
       </PlayerActions>

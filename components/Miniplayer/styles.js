@@ -45,7 +45,68 @@ export const RadioInfo = styled.div`
 
 `
 
+export const SliderContainer = styled.div`
+  display: flex;
+  height: 25px;
+  width: 0px;
+  align-items: center;
+  margin-left: -15px;
+  background: #252f35;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px #0000002b;
+  opacity: 0;
+  transition: opacity .2s, width .5s, margin-left .5s;
+`
+
+export const Slider = styled.input`
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: #4e6673;
+  outline: none;
+  transition: box-shadow .2s;
+  border-radius: 10px;
+
+  &:hover {
+    box-shadow: 0px 0px 5px #ffffff33;
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: 0px 0px 10px;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 11px;
+    height: 11px;
+    background: #fff;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+`
+
+export const Volume = styled.div`
+  display: flex;
+  align-items: center;
+
+  &:hover ${SliderContainer} {
+    transition: opacity .5s, width .7s, margin-left .7s;
+    margin-left: 10px;
+    width: 100px;
+    opacity: 1;
+  }
+`
+
 export const PlayerActions = styled.div`
+  display: flex;
+  align-items: center;
+  
   img {
     padding-left: 15px;
   }
