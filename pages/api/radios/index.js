@@ -19,7 +19,7 @@ export default async (req, res) => {
   const { items } = await data.json();
 
   try {
-    return res.json(items);
+    return res.json({ items });
   } 
   
   catch {
