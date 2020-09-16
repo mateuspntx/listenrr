@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import RadioCard from '../components/RadioCard';
 import AppContainer from '../components/AppContainer';
+import RadioCardSkeleton from '../components/Skeletons/RadioCardSkeleton';
 
 import { useState, useEffect } from 'react';
 import { getRadios, getListenersCount } from '../services/api';
@@ -68,12 +69,17 @@ const Home = () => {
                   videoId={radio.id.videoId}
                   coverUrl={radio.snippet.thumbnails.medium.url}
                   channelTitle={radio.snippet.channelTitle}
-                  // showListenersCount="true"
+                  //showListenersCount="true"
                 />
               )
             })
           ) : (
-            <h2>Loading...</h2>
+            <>
+            <RadioCardSkeleton />
+            <RadioCardSkeleton />
+            <RadioCardSkeleton />
+            <RadioCardSkeleton />
+            </>
           )
         }
       </RowContainer>
