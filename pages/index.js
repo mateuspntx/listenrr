@@ -6,7 +6,7 @@ import AppContainer from '../components/AppContainer';
 import RadioCardSkeleton from '../components/Skeletons/RadioCardSkeleton';
 
 import { useState, useEffect } from 'react';
-import { getRadios, getListenersCount } from '../services/api';
+import { getRadios } from '../services/api';
 
 const Filters = styled.div`
   margin-top: 6rem;
