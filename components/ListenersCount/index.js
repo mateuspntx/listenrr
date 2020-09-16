@@ -1,13 +1,26 @@
 import { useState, useEffect } from 'react';
 import { getListenersCount } from '../../services/api'
 
+const formatNumber = (number) => {
+  return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+}
+
 const ListenersCount = ({ videoId }) => {
 
   const [listenersCount, setListenersCount] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   async function getListenersCountData (videoId) {
-    setListenersCount(await getListenersCount(videoId));
+    const data = await getListenersCount(videoId);
+    
+    if(data == undefined) {
+      setListenersCount('No');
+    }
+
+    else {
+      setListenersCount(data);
+    }
+
     setIsLoading(false);
   }
 
@@ -19,7 +32,7 @@ const ListenersCount = ({ videoId }) => {
     isLoading ? (
       <p>Loading...</p>
     ) : (
-      <>{listenersCount}</>
+      <>{ formatNumber(listenersCount) }</>
     )
   )
 }
