@@ -36,7 +36,7 @@ export const Title = styled.h1`
 export const Label = styled.h2`
     font-size: 1.1rem;
     margin-top: -3px;
-    font-weight: 400;
+    font-weight: 300;
     color: ${props => props.theme.colors.secondary};
 `
 
