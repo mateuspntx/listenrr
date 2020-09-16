@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import RadioCard from '../components/RadioCard';
 import AppContainer from '../components/AppContainer';
 
+import { getRadios, getListenersCount } from '../services/api';
+
 const Filters = styled.div`
   margin-top: 6rem;
   /*width: 1582px;*/
@@ -43,13 +45,6 @@ const Home = () => {
         </Filters>
       </Header>
       <RowContainer > 
-        <RadioCard />
-        <RadioCard />
-        <RadioCard />
-        <RadioCard />
-        <RadioCard />
-        <RadioCard />
-        <RadioCard />
         <RadioCard />
       </RowContainer>
     </AppContainer>
