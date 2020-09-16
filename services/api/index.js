@@ -29,4 +29,17 @@ async function getRadios (filter, maxResults) {
   }
 }
 
-export { getRadios };
+async function getListenersCount (radioId) {
+  let listenersCount;
+
+  await api.get(`/api/radios/listenersCount/${radioId}`)
+    .then(res => {
+      const { items }  = res.data;
+
+      listenersCount = items[0].liveStreamingDetails.concurrentViewers;
+    })
+
+    return listenersCount;
+}
+
+export { getRadios, getListenersCount };
