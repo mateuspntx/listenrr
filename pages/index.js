@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import RadioCard from '../components/RadioCard';
 import AppContainer from '../components/AppContainer';
 
+import { useState, useEffect } from 'react';
 import { getRadios, getListenersCount } from '../services/api';
 
 const Filters = styled.div`
@@ -33,6 +34,19 @@ const RowContainer = styled.div`
 `
 
 const Home = () => {
+
+  const [radiosList, setRadiosList] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  async function getData (filter, maxResults) {
+    setRadiosList(await getRadios(filter, maxResults));
+    setIsLoading(false);
+  }
+
+  useEffect(() => {
+    getData('relevance', 50);
+  }, []);
+
   return (
     <AppContainer>
       <Head>
@@ -45,7 +59,21 @@ const Home = () => {
         </Filters>
       </Header>
       <RowContainer > 
-        <RadioCard />
+        {!isLoading ? 
+          (
+            radiosList.map(radio => {
+              return (
+                <RadioCard
+                key={radio.id.videoId}
+                coverUrl={radio.snippet.thumbnails.medium.url}
+                channelTitle={radio.snippet.channelTitle}
+                />
+              )
+            })
+          ) : (
+            <h2>Loading...</h2>
+          )
+        }
       </RowContainer>
     </AppContainer>
   )
