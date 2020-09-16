@@ -68,7 +68,7 @@ const Home = () => {
                   videoId={radio.id.videoId}
                   coverUrl={radio.snippet.thumbnails.medium.url}
                   channelTitle={radio.snippet.channelTitle}
-                  showListenersCount="true"
+                  // showListenersCount="true"
                 />
               )
             })
