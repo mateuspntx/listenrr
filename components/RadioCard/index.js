@@ -1,14 +1,14 @@
 import { RadioCardDiv, Cover,Title, Label } from './styles';
 import { playIcon } from '../../utils/Icons';
 
-const RadioCard = () => {
+const RadioCard = ({ coverUrl, channelTitle, videoId }) => {
   return (
     <RadioCardDiv>
-      <Cover cover="./assets/images/cover.jpg">
+      <Cover cover={coverUrl}>
         <img src={playIcon} alt="Play"/>
       </Cover>
-      <Title>ChilledCow</Title>
-      <Label>7,835 listeners</Label>
+      <Title>{ channelTitle }</Title>
+      <Label></Label>
     </RadioCardDiv>
   )
 }
