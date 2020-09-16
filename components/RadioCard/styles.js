@@ -25,6 +25,7 @@ export const Cover = styled.div`
 `
 
 export const Title = styled.h1`
+    width: 310px;
     font-size: 1.7rem;
     margin-top: 1rem;
     font-weight: 500;
