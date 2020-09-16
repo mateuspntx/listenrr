@@ -64,9 +64,11 @@ const Home = () => {
             radiosList.map(radio => {
               return (
                 <RadioCard
-                key={radio.id.videoId}
-                coverUrl={radio.snippet.thumbnails.medium.url}
-                channelTitle={radio.snippet.channelTitle}
+                  key={radio.id.videoId}
+                  videoId={radio.id.videoId}
+                  coverUrl={radio.snippet.thumbnails.medium.url}
+                  channelTitle={radio.snippet.channelTitle}
+                  showListenersCount="true"
                 />
               )
             })
