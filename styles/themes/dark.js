@@ -6,5 +6,6 @@ export default {
     logoText: '#FFFFFF',
     primary: '#C4C4C4',
     secondary: '#848484',
+    shimmerEffect: '#232f35',
   }
 };
