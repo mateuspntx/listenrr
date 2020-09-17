@@ -1,6 +1,6 @@
-import Input from '../Input';
-import ThemeSwitcher from '../ThemeSwitcher'
 import { searchIcon } from '../../utils/Icons';
+import Input from '../Input';
+import ThemeSwitcher from '../ThemeSwitcher';
 import { Container, LogoText } from './styles';
 
 const ThemeSwitcherStyles = `
@@ -11,7 +11,7 @@ const ThemeSwitcherStyles = `
     margin-right: auto;
     margin-top: 30px;
   }
-`
+`;
 
 const SearchInputStyles = {
   marginTop: '15px',
@@ -22,21 +22,25 @@ const SearchInputStyles = {
   backgroundPosition: 'right',
   backgroundOrigin: 'content-box',
   backgroundSize: 'auto',
-}
+};
 
 const Header = (props) => {
   return (
     <>
-    <Container>
-      <LogoText>Listenrr</LogoText>
-      <Input type="text" style={SearchInputStyles} name="search" placeholder="What radio are you looking for?"/>
-      <ThemeSwitcher css={ThemeSwitcherStyles}/>
-    </Container>
+      <Container>
+        <LogoText>Listenrr</LogoText>
+        <Input
+          type="text"
+          style={SearchInputStyles}
+          name="search"
+          placeholder="What radio are you looking for?"
+        />
+        <ThemeSwitcher css={ThemeSwitcherStyles} />
+      </Container>
 
-    { props.children }
-
+      {props.children}
     </>
-  )
+  );
 };
 
 export default Header;

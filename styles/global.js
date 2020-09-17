@@ -11,9 +11,9 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${props => props.theme.colors.background};
+    background: ${(props) => props.theme.colors.background};
     font-size: 62.5%;
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
     height: 100vh;
     transition: background-color .5s, color .5s,
                 color .5s, color .5s;
@@ -22,7 +22,7 @@ export default createGlobalStyle`
   .FadeInAnimation05s {
     animation: FadeIn 0.5s ease-in-out;
   }
-  
+
   @keyframes FadeIn {
     from {
       opacity: 0;
@@ -31,7 +31,7 @@ export default createGlobalStyle`
 
   @media (min-width: 1920px) {
     body {
-      
+
     }
 }
 `;

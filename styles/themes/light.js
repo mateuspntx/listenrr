@@ -7,5 +7,5 @@ export default {
     primary: '#333333',
     secondary: '#848484',
     shimmerEffect: '#e2e2e2',
-  }
+  },
 };

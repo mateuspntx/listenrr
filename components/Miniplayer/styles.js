@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const backgroundGradient = `
   linear-gradient(90deg,#232f35e3 0%,#15161fc4 100%)
-`
+`;
 
 export const Container = styled.div`
   position: fixed;
@@ -20,17 +20,16 @@ export const Container = styled.div`
     padding-left: 0;
     padding-right: 0;
   }
-`
+`;
 
 export const RadioInfo = styled.div`
   display: flex;
   grid-template-columns: repeat(3, 3rem);
   grid-gap: 0 10px;
   align-items: center;
-    
 
   h3 {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1rem;
     font-weight: 400;
 
@@ -39,11 +38,10 @@ export const RadioInfo = styled.div`
   }
 
   span {
-    color: #8B9CA7;
-    font-size: .8rem;
+    color: #8b9ca7;
+    font-size: 0.8rem;
   }
-
-`
+`;
 
 export const SliderContainer = styled.div`
   display: flex;
@@ -56,8 +54,8 @@ export const SliderContainer = styled.div`
   border-radius: 3px;
   box-shadow: 0px 0px 10px #0000002b;
   opacity: 0;
-  transition: opacity .2s, width .5s, margin-left .5s;
-`
+  transition: opacity 0.2s, width 0.5s, margin-left 0.5s;
+`;
 
 export const Slider = styled.input`
   appearance: none;
@@ -65,7 +63,7 @@ export const Slider = styled.input`
   height: 3px;
   background: #4e6673;
   outline: none;
-  transition: box-shadow .2s;
+  transition: box-shadow 0.2s;
   border-radius: 10px;
 
   &:hover {
@@ -89,24 +87,24 @@ export const Slider = styled.input`
     border-radius: 100%;
     cursor: pointer;
   }
-`
+`;
 
 export const Volume = styled.div`
   display: flex;
   align-items: center;
 
   &:hover ${SliderContainer} {
-    transition: opacity .5s, width .7s, margin-left .7s;
+    transition: opacity 0.5s, width 0.7s, margin-left 0.7s;
     margin-left: 10px;
     width: 100px;
     opacity: 1;
   }
-`
+`;
 
 export const PlayerActions = styled.div`
   display: flex;
   align-items: center;
-  
+
   img {
     padding-left: 15px;
   }
@@ -116,11 +114,11 @@ export const PlayerActions = styled.div`
       padding-left: 10px;
     }
   }
-`
+`;
 export const Thumb = `
   width: 35px;
   height: 35px;
   background: url('/assets/images/cover.jpg'), #232f35;
   background-size: cover;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
-`
+`;

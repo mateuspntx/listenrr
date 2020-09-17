@@ -1,5 +1,5 @@
-import { RadioCardDiv, Cover, Title, Label } from './styles';
 import { ShimmerEffect } from '../ShimmerEffect';
+import { Cover, Label, RadioCardDiv, Title } from './styles';
 
 const RadioCardSkeleton = () => {
   return (
@@ -8,7 +8,7 @@ const RadioCardSkeleton = () => {
       <Title css={ShimmerEffect} />
       <Label css={ShimmerEffect} />
     </RadioCardDiv>
-  )
-}
+  );
+};
 
 export default RadioCardSkeleton;
