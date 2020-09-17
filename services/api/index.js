@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.API_BASE_URL || 'http://localhost:3000',
+  baseURL: process.env.API_BASE_URL || 'http://localhost:3000'
 });
 
 const LOCAL_STORAGE_NAME = 'LSTNR_cachedRadiosList';
 const LOCAL_STORAGE_DATE = 'LSTNR_Date';
+
+const formatNumber = (number) => {
+  return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+};
 
 async function getRadios(filter, maxResults) {
   const date = new Date();
@@ -33,7 +37,18 @@ async function getListenersCount(radioId) {
   await api.get(`/api/radios/listenersCount/${radioId}`).then((res) => {
     const { items } = res.data;
 
-    listenersCount = items[0].liveStreamingDetails.concurrentViewers;
+    const count = items[0].liveStreamingDetails.concurrentViewers;
+
+    if (
+      typeof count != 'undefined' &&
+      count != null &&
+      count.length != null &&
+      count.length > 0
+    ) {
+      listenersCount = formatNumber(count);
+    } else {
+      listenersCount = 'No';
+    }
   });
 
   return listenersCount;
