@@ -8,8 +8,9 @@ export const MiniplayerProvider = ({ children }) => {
   const [isMuted, setIsMuted] = useState(false);
   const [radioId, setRadioId] = useState('');
   const [radioChannelUrl, setRadioChannelUrl] = useState('');
-  const [radioName, setRadioName] = useState('Testing');
-  const [listenersCount, setListenersCount] = useState('');
+  const [radioName, setRadioName] = useState('Loading...');
+  const [radioCoverUrl, setRadioCoverUrl] = useState('');
+  const [listenersCount, setListenersCount] = useState('No');
 
   const states = {
     isShowing: { get: isShowing, set: setIsShowing },
@@ -18,6 +19,7 @@ export const MiniplayerProvider = ({ children }) => {
     radioId: { get: radioId, set: setRadioId },
     radioChannelUrl: { get: radioChannelUrl, set: setRadioChannelUrl },
     radioName: { get: radioName, set: setRadioName },
+    radioCoverUrl: { get: radioCoverUrl, set: setRadioCoverUrl },
     listenersCount: { get: listenersCount, set: setListenersCount }
   };
 
