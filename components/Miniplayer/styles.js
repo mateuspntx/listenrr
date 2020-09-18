@@ -40,6 +40,7 @@ export const RadioInfo = styled.div`
   span {
     color: #8b9ca7;
     font-size: 0.8rem;
+    margin: 0;
   }
 `;
 
