@@ -47,8 +47,4 @@ export const RadioCardDiv = styled.div`
   &:hover {
     transform: scale(1.03);
   }
-
-  ${Cover}
-  ${Title}
-    ${Label}
 `;
