@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const playBtnHover = '${RadioCardDiv}:hover img {opacity: 1;}';
 
