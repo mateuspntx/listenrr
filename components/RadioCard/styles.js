@@ -21,6 +21,12 @@ export const Cover = styled.div`
     transition: 0.2s;
   }
 
+  @media (max-width: 615px) {
+    img {
+      display: none;
+    }
+  }
+
   ${playBtnHover}
 `;
 
