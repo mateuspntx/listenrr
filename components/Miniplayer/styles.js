@@ -23,6 +23,17 @@ export const Container = styled.div`
   }
 `;
 
+export const Button = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+
+  img {
+    width: 2.4rem;
+  }
+`;
+
 export const RadioInfo = styled.div`
   display: flex;
   grid-template-columns: repeat(3, 3rem);
