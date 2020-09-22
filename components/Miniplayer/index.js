@@ -1,5 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
+import MiniplayerLib from '../../libs/MiniplayerLib';
 import {
   chatIcon,
   externalIcon,
@@ -11,6 +12,7 @@ import {
 import ListenersCount from '../ListenersCount';
 import { MiniplayerContext } from './MiniplayerContext';
 import {
+  Button,
   Container,
   PlayerActions,
   RadioInfo,
@@ -22,13 +24,9 @@ import {
 const Miniplayer = () => {
   const miniplayerData = useContext(MiniplayerContext);
 
-  const {
-    isShowing,
-    isPlaying,
-    radioName,
-    radioId,
-    radioCoverUrl
-  } = miniplayerData;
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const { isShowing, radioName, radioId, radioCoverUrl } = miniplayerData;
 
   const Count = () => <ListenersCount videoId={radioId.get} />;
 
@@ -44,6 +42,16 @@ const Miniplayer = () => {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
   `;
 
+  const handleMiniplayerPause = () => {
+    setIsPlaying(false);
+    MiniplayerLib.Pause();
+  };
+
+  const handleMiniplayerPlay = () => {
+    setIsPlaying(true);
+    MiniplayerLib.Play();
+  };
+
   if (isShowing.get) {
     return (
       <Container>
@@ -51,21 +59,31 @@ const Miniplayer = () => {
           <div css={Thumb} />
           <h3>
             {radioName.get}
-            <span>
-              <Count /> people listening now
-            </span>
+            {/* <span><Count /> people listening now</span> */}
           </h3>
         </RadioInfo>
         <PlayerActions>
-          <img src={pauseIcon} alt="Pause" />
+          {isPlaying ? (
+            <Button onClick={() => handleMiniplayerPause()}>
+              <img src={pauseIcon} alt="Pause" />
+            </Button>
+          ) : (
+            <Button onClick={() => handleMiniplayerPlay()}>
+              <img src={playIcon} alt="Play" />
+            </Button>
+          )}
           <Volume>
             <img src={volumeIcon} alt="Volume" />
             <SliderContainer>
               <Slider type="range" />
             </SliderContainer>
           </Volume>
-          <img src={chatIcon} alt="Chat" />
-          <img src={externalIcon} alt="Channel" />
+          <Button>
+            <img src={chatIcon} alt="Chat" />
+          </Button>
+          <Button>
+            <img src={externalIcon} alt="Channel" />
+          </Button>
         </PlayerActions>
       </Container>
     );
