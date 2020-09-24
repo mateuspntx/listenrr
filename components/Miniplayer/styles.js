@@ -28,10 +28,6 @@ export const Button = styled.button`
   border: none;
   outline: none;
   display: flex;
-
-  img {
-    width: 2.4rem;
-  }
 `;
 
 export const RadioInfo = styled.div`
@@ -120,6 +116,7 @@ export const PlayerActions = styled.div`
 
   img {
     padding-left: 15px;
+    width: 2.4rem;
   }
 
   @media (max-width: 615px) {
