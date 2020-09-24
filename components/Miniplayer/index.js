@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
 import {
@@ -24,9 +24,14 @@ import {
 const Miniplayer = () => {
   const miniplayerData = useContext(MiniplayerContext);
 
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  const { isShowing, radioName, radioId, radioCoverUrl } = miniplayerData;
+  const {
+    isShowing,
+    isPlaying,
+    volume,
+    radioName,
+    radioId,
+    radioCoverUrl
+  } = miniplayerData;
 
   const Count = () => <ListenersCount videoId={radioId.get} />;
 
@@ -43,13 +48,18 @@ const Miniplayer = () => {
   `;
 
   const handleMiniplayerPause = () => {
-    setIsPlaying(false);
     MiniplayerLib.Pause();
+    isPlaying.set(false);
   };
 
   const handleMiniplayerPlay = () => {
-    setIsPlaying(true);
     MiniplayerLib.Play();
+    isPlaying.set(true);
+  };
+
+  const handleMiniplayerVolume = (e) => {
+    volume.set(e.target.value);
+    MiniplayerLib.setVolume(e.target.value);
   };
 
   if (isShowing.get) {
@@ -63,7 +73,7 @@ const Miniplayer = () => {
           </h3>
         </RadioInfo>
         <PlayerActions>
-          {isPlaying ? (
+          {isPlaying.get ? (
             <Button onClick={() => handleMiniplayerPause()}>
               <img src={pauseIcon} alt="Pause" />
             </Button>
@@ -73,9 +83,16 @@ const Miniplayer = () => {
             </Button>
           )}
           <Volume>
-            <img src={volumeIcon} alt="Volume" />
+            <img
+              src={volume.get == 0 ? mutedVolumeIcon : volumeIcon}
+              alt="Volume"
+            />
             <SliderContainer>
-              <Slider type="range" />
+              <Slider
+                type="range"
+                value={volume.get}
+                onChange={(e) => handleMiniplayerVolume(e)}
+              />
             </SliderContainer>
           </Volume>
           <Button>
