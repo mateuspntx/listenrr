@@ -22,7 +22,7 @@ const Listenrr = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <script src="https://www.youtube.com/iframe_api"></script>
+        <script crossOrigin src="https://www.youtube.com/iframe_api"></script>
         <link
           href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;600&display=swap"
           rel="stylesheet"
