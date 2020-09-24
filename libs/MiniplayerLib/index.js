@@ -1,7 +1,10 @@
-/* eslint-disable no-unused-vars */
 import { getElement as $ } from '../../utils/getElement';
 
-let player;
+let Player;
+
+const passPlayerEvent = (e) => {
+  Player = e;
+};
 
 const MiniplayerLib = {};
 
@@ -13,22 +16,27 @@ MiniplayerLib.Init = (htmlElement, videoId) => {
     '#youtube__iframe'
   ).src = `https://www.youtube.com/embed/${videoId}${options}`;
 
-  player = new YT.Player(htmlElement, {
+  new window.YT.Player(htmlElement, {
     videoId,
     events: {
-      onReady: console.log('Playing YT videoId: ', videoId)
+      onReady: passPlayerEvent
     }
   });
 };
 
 MiniplayerLib.Play = () => {
-  player.playVideo();
-  console.log('Playing YT Video');
+  Player.target.playVideo();
+  console.log('Playing');
 };
 
 MiniplayerLib.Pause = () => {
-  player.pauseVideo();
-  console.log('Paused YT Video');
+  Player.target.pauseVideo();
+  console.log('Paused');
+};
+
+MiniplayerLib.setVolume = (event) => {
+  Player.target.setVolume(event);
+  console.log('Set volume to: ', event);
 };
 
 export default MiniplayerLib;
