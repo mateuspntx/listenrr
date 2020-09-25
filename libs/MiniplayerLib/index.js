@@ -30,6 +30,14 @@ MiniplayerLib.Init = (htmlElement, videoId) => {
   });
 };
 
+MiniplayerLib.importYTAPI = () => {
+  const tag = document.createElement('script');
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+
+  tag.src = 'https://www.youtube.com/iframe_api';
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+};
+
 MiniplayerLib.Play = () => {
   Player.target.playVideo();
   console.log('Playing');
