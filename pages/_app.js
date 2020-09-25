@@ -6,6 +6,7 @@ import useDarkMode from 'use-dark-mode';
 import Miniplayer from '../components/Miniplayer';
 import { MiniplayerProvider } from '../components/Miniplayer/MiniplayerContext';
 import YoutubeIframe from '../components/YoutubeIframe';
+import MiniplayerLib from '../libs/MiniplayerLib';
 import GlobalStyle from '../styles/global';
 import darkTheme from '../styles/themes/dark';
 import lightTheme from '../styles/themes/light';
@@ -16,13 +17,13 @@ const Listenrr = ({ Component, pageProps }) => {
   const theme = darkMode.value ? darkTheme : lightTheme;
 
   useEffect(() => {
+    MiniplayerLib.importYTAPI();
     setIsMounted(true);
   }, []);
 
   return (
     <>
       <Head>
-        <script crossOrigin src="https://www.youtube.com/iframe_api"></script>
         <link
           href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;600&display=swap"
           rel="stylesheet"
