@@ -58,8 +58,8 @@ const Miniplayer = () => {
   };
 
   const handleMiniplayerVolume = (e) => {
-    volume.set(e.target.value);
     MiniplayerLib.setVolume(e.target.value);
+    volume.set(e.target.value);
   };
 
   if (isShowing.get) {
@@ -90,7 +90,7 @@ const Miniplayer = () => {
             <SliderContainer>
               <Slider
                 type="range"
-                value={volume.get}
+                value={localStorage.getItem('LSTNR_playerVolume') || volume.get}
                 onChange={(e) => handleMiniplayerVolume(e)}
               />
             </SliderContainer>
