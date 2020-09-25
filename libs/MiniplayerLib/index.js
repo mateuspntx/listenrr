@@ -3,6 +3,12 @@ import { getElement as $ } from '../../utils/getElement';
 let Player;
 
 const passPlayerEvent = (e) => {
+  const localStorageVolume = localStorage.getItem('LSTNR_playerVolume');
+
+  if (localStorageVolume) {
+    e.target.setVolume(localStorageVolume);
+  }
+
   Player = e;
 };
 
@@ -34,9 +40,10 @@ MiniplayerLib.Pause = () => {
   console.log('Paused');
 };
 
-MiniplayerLib.setVolume = (event) => {
-  Player.target.setVolume(event);
-  console.log('Set volume to: ', event);
+MiniplayerLib.setVolume = (e) => {
+  localStorage.setItem('LSTNR_playerVolume', e);
+  Player.target.setVolume(e);
+  console.log('Set volume to: ', e);
 };
 
 export default MiniplayerLib;
