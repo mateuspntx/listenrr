@@ -19,7 +19,15 @@ export const Container = styled.div`
   @media (max-width: 615px) {
     padding-left: 0;
     padding-right: 0;
+    bottom: -1px;
   }
+`;
+
+export const Button = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
 `;
 
 export const RadioInfo = styled.div`
@@ -108,6 +116,7 @@ export const PlayerActions = styled.div`
 
   img {
     padding-left: 15px;
+    width: 2.4rem;
   }
 
   @media (max-width: 615px) {

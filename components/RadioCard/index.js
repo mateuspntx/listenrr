@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
+import MiniplayerLib from '../../libs/MiniplayerLib';
 import { playIcon } from '../../utils/Icons';
 import ListenersCount from '../ListenersCount';
 import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
@@ -22,6 +23,7 @@ const RadioCard = ({ coverUrl, channelTitle, videoId, showListenersCount }) => {
     radioCoverUrl.set(coverUrl);
     isShowing.set(true);
     isPlaying.set(true);
+    MiniplayerLib.Init('youtube__iframe', videoId);
   };
 
   return (

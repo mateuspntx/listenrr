@@ -1,10 +1,9 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const playBtnHover = '${RadioCardDiv}:hover img {opacity: 1;}';
 
 export const Cover = styled.div`
   background: url(${(props) => CSS.escape(props.cover)}), #232f35;
-  background-size: cover;
   background-position: center;
   width: 310px;
   height: 250px;
@@ -19,6 +18,12 @@ export const Cover = styled.div`
     width: 3rem;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.555));
     transition: 0.2s;
+  }
+
+  @media (max-width: 615px) {
+    img {
+      display: none;
+    }
   }
 
   ${playBtnHover}
@@ -47,8 +52,4 @@ export const RadioCardDiv = styled.div`
   &:hover {
     transform: scale(1.03);
   }
-
-  ${Cover}
-  ${Title}
-    ${Label}
 `;

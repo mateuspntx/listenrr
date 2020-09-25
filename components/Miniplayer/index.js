@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 
+import MiniplayerLib from '../../libs/MiniplayerLib';
 import {
   chatIcon,
   externalIcon,
@@ -11,6 +12,7 @@ import {
 import ListenersCount from '../ListenersCount';
 import { MiniplayerContext } from './MiniplayerContext';
 import {
+  Button,
   Container,
   PlayerActions,
   RadioInfo,
@@ -25,6 +27,7 @@ const Miniplayer = () => {
   const {
     isShowing,
     isPlaying,
+    volume,
     radioName,
     radioId,
     radioCoverUrl
@@ -44,6 +47,21 @@ const Miniplayer = () => {
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
   `;
 
+  const handleMiniplayerPause = () => {
+    MiniplayerLib.Pause();
+    isPlaying.set(false);
+  };
+
+  const handleMiniplayerPlay = () => {
+    MiniplayerLib.Play();
+    isPlaying.set(true);
+  };
+
+  const handleMiniplayerVolume = (e) => {
+    MiniplayerLib.setVolume(e.target.value);
+    volume.set(e.target.value);
+  };
+
   if (isShowing.get) {
     return (
       <Container>
@@ -51,21 +69,38 @@ const Miniplayer = () => {
           <div css={Thumb} />
           <h3>
             {radioName.get}
-            <span>
-              <Count /> people listening now
-            </span>
+            {/* <span><Count /> people listening now</span> */}
           </h3>
         </RadioInfo>
         <PlayerActions>
-          <img src={pauseIcon} alt="Pause" />
+          {isPlaying.get ? (
+            <Button onClick={() => handleMiniplayerPause()}>
+              <img src={pauseIcon} alt="Pause" />
+            </Button>
+          ) : (
+            <Button onClick={() => handleMiniplayerPlay()}>
+              <img src={playIcon} alt="Play" />
+            </Button>
+          )}
           <Volume>
-            <img src={volumeIcon} alt="Volume" />
+            <img
+              src={volume.get == 0 ? mutedVolumeIcon : volumeIcon}
+              alt="Volume"
+            />
             <SliderContainer>
-              <Slider type="range" />
+              <Slider
+                type="range"
+                value={localStorage.getItem('LSTNR_playerVolume') || volume.get}
+                onChange={(e) => handleMiniplayerVolume(e)}
+              />
             </SliderContainer>
           </Volume>
-          <img src={chatIcon} alt="Chat" />
-          <img src={externalIcon} alt="Channel" />
+          <Button>
+            <img src={chatIcon} alt="Chat" />
+          </Button>
+          <Button>
+            <img src={externalIcon} alt="Channel" />
+          </Button>
         </PlayerActions>
       </Container>
     );

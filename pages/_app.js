@@ -5,6 +5,7 @@ import useDarkMode from 'use-dark-mode';
 
 import Miniplayer from '../components/Miniplayer';
 import { MiniplayerProvider } from '../components/Miniplayer/MiniplayerContext';
+import YoutubeIframe from '../components/YoutubeIframe';
 import GlobalStyle from '../styles/global';
 import darkTheme from '../styles/themes/dark';
 import lightTheme from '../styles/themes/light';
@@ -21,6 +22,7 @@ const Listenrr = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+        <script crossOrigin src="https://www.youtube.com/iframe_api"></script>
         <link
           href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;600&display=swap"
           rel="stylesheet"
@@ -49,6 +51,7 @@ const Listenrr = ({ Component, pageProps }) => {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <MiniplayerProvider>
+        <YoutubeIframe />
         <ThemeProvider theme={theme}>
           {isMounted && <Component {...pageProps} />}
           <GlobalStyle />

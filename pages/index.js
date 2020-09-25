@@ -64,7 +64,7 @@ const Home = () => {
             <RadioCard
               key={radio.id.videoId}
               videoId={radio.id.videoId}
-              coverUrl={radio.snippet.thumbnails.medium.url}
+              coverUrl={radio.snippet.thumbnails.high.url}
               channelTitle={radio.snippet.channelTitle}
             />
           ))
