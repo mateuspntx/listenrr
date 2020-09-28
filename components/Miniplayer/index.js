@@ -62,6 +62,18 @@ const Miniplayer = () => {
     volume.set(e.target.value);
   };
 
+  const handleMiniplayerOpenChat = () => {
+    window.open(
+      `https://www.youtube.com/live_chat?is_popout=1&v=${radioId.get}`,
+      '_blank',
+      'toolbar=no,scrollbars=yes,resizable=yes,top=1,left=1,width=500,height=600'
+    );
+  };
+
+  const handleMiniplayerExternalLink = () => {
+    window.open(`https://youtube.com/watch?v=${radioId.get}`, '_blank');
+  };
+
   if (isShowing.get) {
     return (
       <Container>
@@ -74,12 +86,17 @@ const Miniplayer = () => {
         </RadioInfo>
         <PlayerActions>
           {isPlaying.get ? (
-            <Button onClick={() => handleMiniplayerPause()}>
-              <img src={pauseIcon} alt="Pause" />
+            <Button onClick={handleMiniplayerPause}>
+              <img
+                src={pauseIcon}
+                alt="Pause"
+                title="Pause"
+                className="pointer"
+              />
             </Button>
           ) : (
-            <Button onClick={() => handleMiniplayerPlay()}>
-              <img src={playIcon} alt="Play" />
+            <Button onClick={handleMiniplayerPlay}>
+              <img src={playIcon} alt="Play" title="Play" className="pointer" />
             </Button>
           )}
           <Volume>
@@ -95,11 +112,21 @@ const Miniplayer = () => {
               />
             </SliderContainer>
           </Volume>
-          <Button>
-            <img src={chatIcon} alt="Chat" />
+          <Button onClick={handleMiniplayerOpenChat}>
+            <img
+              src={chatIcon}
+              alt="Open chat"
+              title="Open chat"
+              className="pointer"
+            />
           </Button>
-          <Button>
-            <img src={externalIcon} alt="Channel" />
+          <Button onClick={handleMiniplayerExternalLink}>
+            <img
+              src={externalIcon}
+              alt="Open on Youtube"
+              title="Open on Youtube"
+              className="pointer"
+            />
           </Button>
         </PlayerActions>
       </Container>
