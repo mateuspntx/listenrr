@@ -8,7 +8,7 @@ export const Container = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: ${(props) => (props.expandMiniplayer ? '100vh' : '50px')};
   padding: 10px;
   background: ${backgroundGradient};
   backdrop-filter: saturate(180%) blur(10px);
