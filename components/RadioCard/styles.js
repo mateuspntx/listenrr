@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const playBtnHover = '${RadioCardDiv}:hover img {opacity: 1;}';
 
 export const Cover = styled.div`
-  background: url(${(props) => CSS.escape(props.cover)}), #232f35;
+  background: #232f35;
+  background-image: url(${(props) => CSS.escape(props.cover)});
   background-position: center;
   width: 310px;
   height: 250px;
@@ -46,7 +47,7 @@ export const Label = styled.h2`
 `;
 
 export const RadioCardDiv = styled.div`
-  transition: 0.5s;
+  transition: all 0.5s;
   cursor: pointer;
 
   &:hover {
