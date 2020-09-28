@@ -1,14 +1,16 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
 import {
   chatIcon,
+  closeIcon,
   externalIcon,
   mutedVolumeIcon,
   pauseIcon,
   playIcon,
   volumeIcon
 } from '../../utils/Icons';
+import ChatIframe from '../ChatIframe';
 import ListenersCount from '../ListenersCount';
 import { MiniplayerContext } from './MiniplayerContext';
 import {
@@ -23,6 +25,7 @@ import {
 
 const Miniplayer = () => {
   const miniplayerData = useContext(MiniplayerContext);
+  const [expandMiniplayer, setExpandMiniplayer] = useState(false);
 
   const {
     isShowing,
@@ -62,26 +65,43 @@ const Miniplayer = () => {
     volume.set(e.target.value);
   };
 
-  const handleMiniplayerOpenChat = () => {
-    window.open(
-      `https://www.youtube.com/live_chat?is_popout=1&v=${radioId.get}`,
-      '_blank',
-      'toolbar=no,scrollbars=yes,resizable=yes,top=1,left=1,width=500,height=600'
-    );
-  };
-
   const handleMiniplayerExternalLink = () => {
     window.open(`https://youtube.com/watch?v=${radioId.get}`, '_blank');
   };
 
+  const handleExpand = () => {
+    setExpandMiniplayer(true);
+  };
+
+  const handleMinimize = () => {
+    setExpandMiniplayer(false);
+  };
+
+  const CloseButton = () => {
+    return (
+      <Button
+        style={{ position: 'absolute', top: '0', margin: '10px' }}
+        onClick={handleMinimize}
+      >
+        <img
+          src={closeIcon}
+          alt="Minimize miniplayer"
+          title="Minimize miniplayer"
+          className="pointer"
+          width="50px"
+        />
+      </Button>
+    );
+  };
+
   if (isShowing.get) {
     return (
-      <Container>
+      <Container expandMiniplayer={expandMiniplayer}>
         <RadioInfo>
           <div css={Thumb} />
           <h3>
             {radioName.get}
-            {/* <span><Count /> people listening now</span> */}
+            <span>{/* <Count /> people listening now */}</span>
           </h3>
         </RadioInfo>
         <PlayerActions>
@@ -112,7 +132,7 @@ const Miniplayer = () => {
               />
             </SliderContainer>
           </Volume>
-          <Button onClick={handleMiniplayerOpenChat}>
+          <Button onClick={expandMiniplayer ? handleMinimize : handleExpand}>
             <img
               src={chatIcon}
               alt="Open chat"
@@ -129,6 +149,11 @@ const Miniplayer = () => {
             />
           </Button>
         </PlayerActions>
+        {expandMiniplayer && (
+          <>
+            <ChatIframe radioId={radioId.get} /> <CloseButton />
+          </>
+        )}
       </Container>
     );
   } else {
