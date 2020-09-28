@@ -28,6 +28,10 @@ export const Button = styled.button`
   border: none;
   outline: none;
   display: flex;
+
+  .pointer {
+    cursor: pointer;
+  }
 `;
 
 export const RadioInfo = styled.div`
