@@ -1,4 +1,13 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
+
+export const FadeInAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export default createGlobalStyle`
   * {
@@ -17,16 +26,7 @@ export default createGlobalStyle`
     height: 100vh;
     transition: background-color .5s, color .5s,
                 color .5s, color .5s;
-  }
-
-  .FadeInAnimation05s {
-    animation: FadeIn 0.5s ease-in-out;
-  }
-
-  @keyframes FadeIn {
-    from {
-      opacity: 0;
-    }
+    animation: 0.5s ease 0s 1 ${FadeInAnimation};
   }
 
   @media (min-width: 1920px) {
