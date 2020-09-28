@@ -7,3 +7,4 @@ export const externalIcon = '/assets/images/external-icon.svg';
 export const searchIcon = '/assets/images/search-icon.svg';
 export const lightModeIcon = '/assets/images/lightmode-icon.svg';
 export const darkModeIcon = '/assets/images/darkmode-icon.svg';
+export const closeIcon = '/assets/images/close-icon.svg';
