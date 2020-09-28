@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { FadeInAnimation } from '../../styles/global';
+
 export const backgroundGradient = `
   linear-gradient(90deg,#232f35e3 0%,#15161fc4 100%)
 `;
@@ -15,6 +17,8 @@ export const Container = styled.div`
   box-shadow: 0px 22px 20px 20px rgb(0 0 0 / 73%);
   display: flex;
   align-items: center;
+  transition: height 0.5s ease;
+  animation: 0.2s ease 0s 1 ${FadeInAnimation};
 
   @media (max-width: 615px) {
     padding-left: 0;
