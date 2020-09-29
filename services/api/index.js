@@ -11,13 +11,13 @@ const formatNumber = (number) => {
   return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
 
-async function getRadios(filter, maxResults) {
+async function getRadios(query, filter, maxResults) {
   const date = new Date();
   const todayDate = date.getDate();
 
   if (localStorage.getItem(LOCAL_STORAGE_DATE) != todayDate) {
     await api
-      .get(`/api/radios?order=${filter}&maxResults=${maxResults}`)
+      .get(`/api/radios?q=${query}&order=${filter}&maxResults=${maxResults}`)
       .then((res) => {
         const { items } = res.data;
 
