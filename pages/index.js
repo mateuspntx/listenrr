@@ -38,13 +38,13 @@ const Home = () => {
   const [radiosList, setRadiosList] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  async function getData(filter, maxResults) {
-    setRadiosList(await getRadios(filter, maxResults));
+  async function getData(query, filter, maxResults) {
+    setRadiosList(await getRadios(query, filter, maxResults));
     setIsLoading(false);
   }
 
   useEffect(() => {
-    getData('relevance', 50);
+    getData('chilling', 'relevance', 50);
   }, []);
 
   return (
