@@ -5,11 +5,11 @@ export default async (req, res) => {
   const key = process.env.YOUTUBE_API_KEY;
 
   const {
-    query: { order, maxResults }
+    query: { q, order, maxResults }
   } = req;
 
   const defaultParams = `part=snippet&videoCategoryId=10&eventType=live`;
-  const url = `https://www.googleapis.com/youtube/v3/search?${defaultParams}&maxResults=${maxResults}&order=${order}&type=video&key=${key}`;
+  const url = `https://www.googleapis.com/youtube/v3/search?q=${q}&order=${order}&${defaultParams}&maxResults=${maxResults}&type=video&key=${key}`;
 
   try {
     const data = await fetch(url);
