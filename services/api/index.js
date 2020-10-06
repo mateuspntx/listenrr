@@ -1,15 +1,13 @@
 import axios from 'axios';
 
+import { formatNumber } from '../../utils/formatNumber';
+
 const api = axios.create({
   baseURL: process.env.VERCEL_URL || process.env.API_BASE_URL
 });
 
 const LOCAL_STORAGE_NAME = 'LSTNR_cachedRadiosList';
 const LOCAL_STORAGE_DATE = 'LSTNR_Date';
-
-const formatNumber = (number) => {
-  return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-};
 
 async function getRadios(query, filter, maxResults) {
   const date = new Date();
