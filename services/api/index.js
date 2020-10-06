@@ -9,14 +9,6 @@ const api = axios.create({
 const LOCAL_STORAGE_NAME = 'LSTNR_cachedRadiosList';
 const LOCAL_STORAGE_DATE = 'LSTNR_Date';
 
-// async function getRadios(query, filter, maxResults, needCache) {
-//   if (needCache) {
-//     return getCache(query, filter, maxResults);
-//   }
-
-//   return getData(query, filter, maxResults);
-// }
-
 async function getRadios(params) {
   const { query, filter, maxResults, needCache } = params;
 
