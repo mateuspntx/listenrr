@@ -1,5 +1,10 @@
+import { debounce } from 'lodash';
+import { useContext, useRef } from 'react';
+
+import { getRadios } from '../../services/api';
 import { searchIcon } from '../../utils/Icons';
 import Input from '../Input';
+import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
 import ThemeSwitcher from '../ThemeSwitcher';
 import { Container, LogoText } from './styles';
 
@@ -21,10 +26,32 @@ const SearchInputStyles = {
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'right',
   backgroundOrigin: 'content-box',
-  backgroundSize: 'auto',
+  backgroundSize: 'auto'
 };
 
-const Header = (props) => {
+const Header = ({ children }) => {
+  const miniplayerData = useContext(MiniplayerContext);
+
+  const { radiosList } = miniplayerData;
+
+  const debounceFetch = useRef(
+    debounce(async (value) => {
+      radiosList.set(
+        await getRadios({
+          query: value || 'lofi',
+          filter: 'relevance',
+          maxResults: 50
+        })
+      );
+      console.log('loaded');
+    }, 1000)
+  ).current;
+
+  const handleSearch = (e) => {
+    console.log('loading...');
+    debounceFetch(e.target.value);
+  };
+
   return (
     <>
       <Container>
@@ -34,11 +61,11 @@ const Header = (props) => {
           style={SearchInputStyles}
           name="search"
           placeholder="What radio are you looking for?"
+          onChange={handleSearch}
         />
         <ThemeSwitcher css={ThemeSwitcherStyles} />
       </Container>
-
-      {props.children}
+      {children}
     </>
   );
 };
