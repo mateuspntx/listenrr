@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
 import {
@@ -35,12 +35,6 @@ const Miniplayer = () => {
     radioId,
     radioCoverUrl
   } = miniplayerData;
-
-  const Count = () => <ListenersCount videoId={radioId.get} />;
-
-  useEffect(() => {
-    Count();
-  }, []);
 
   const Thumb = `
     width: 35px;
@@ -101,7 +95,9 @@ const Miniplayer = () => {
           <div css={Thumb} />
           <h3>
             {radioName.get}
-            <span>{/* <Count /> people listening now */}</span>
+            <span>
+              <ListenersCount videoId={radioId.get} showMessage />
+            </span>
           </h3>
         </RadioInfo>
         <PlayerActions>
