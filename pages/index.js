@@ -1,9 +1,10 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import AppContainer from '../components/AppContainer';
 import Header from '../components/Header';
+import { MiniplayerContext } from '../components/Miniplayer/MiniplayerContext';
 import RadioCard from '../components/RadioCard';
 import RadioCardSkeleton from '../components/Skeletons/RadioCardSkeleton';
 import { getRadios } from '../services/api';
@@ -35,11 +36,14 @@ const RowContainer = styled.div`
 `;
 
 const Home = () => {
-  const [radiosList, setRadiosList] = useState('');
+  const miniplayerData = useContext(MiniplayerContext);
+
   const [isLoading, setIsLoading] = useState(true);
 
+  const { radiosList } = miniplayerData;
+
   async function getData(params) {
-    setRadiosList(await getRadios(params));
+    radiosList.set(await getRadios(params));
     setIsLoading(false);
   }
 
@@ -65,7 +69,7 @@ const Home = () => {
       </Header>
       <RowContainer>
         {!isLoading ? (
-          radiosList.map((radio) => (
+          radiosList.get.map((radio) => (
             <RadioCard
               key={radio.id.videoId}
               videoId={radio.id.videoId}
