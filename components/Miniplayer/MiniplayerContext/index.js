@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 export const MiniplayerContext = React.createContext();
 
 export const MiniplayerProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isShowing, setIsShowing] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
@@ -15,6 +16,7 @@ export const MiniplayerProvider = ({ children }) => {
   const [radiosList, setRadiosList] = useState([]);
 
   const states = {
+    isLoading: { get: isLoading, set: setIsLoading },
     isShowing: { get: isShowing, set: setIsShowing },
     isPlaying: { get: isPlaying, set: setIsPlaying },
     volume: { get: volume, set: setVolume },
