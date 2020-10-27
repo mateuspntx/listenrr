@@ -32,23 +32,32 @@ const SearchInputStyles = {
 const Header = ({ children }) => {
   const miniplayerData = useContext(MiniplayerContext);
 
-  const { radiosList } = miniplayerData;
+  const { radiosList, isLoading } = miniplayerData;
 
   const debounceFetch = useRef(
     debounce(async (value) => {
-      radiosList.set(
-        await getRadios({
-          query: value || 'lofi',
-          filter: 'relevance',
-          maxResults: 50
-        })
-      );
-      console.log('loaded');
-    }, 1000)
+      if (value) {
+        radiosList.set(
+          await getRadios({
+            query: value,
+            filter: 'relevance',
+            maxResults: 50
+          })
+        );
+      } else {
+        radiosList.set(
+          await getRadios({
+            needCache: true
+          })
+        );
+      }
+
+      isLoading.set(false);
+    }, 500)
   ).current;
 
   const handleSearch = (e) => {
-    console.log('loading...');
+    isLoading.set(true);
     debounceFetch(e.target.value);
   };
 
