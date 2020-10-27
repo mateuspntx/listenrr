@@ -38,13 +38,11 @@ const RowContainer = styled.div`
 const Home = () => {
   const miniplayerData = useContext(MiniplayerContext);
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  const { radiosList } = miniplayerData;
+  const { radiosList, isLoading } = miniplayerData;
 
   async function getData(params) {
     radiosList.set(await getRadios(params));
-    setIsLoading(false);
+    isLoading.set(false);
   }
 
   useEffect(() => {
@@ -68,7 +66,7 @@ const Home = () => {
         </Filters>
       </Header>
       <RowContainer>
-        {!isLoading ? (
+        {!isLoading.get ? (
           radiosList.get.map((radio) => (
             <RadioCard
               key={radio.id.videoId}
