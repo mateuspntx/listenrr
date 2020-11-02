@@ -11,7 +11,7 @@ module.exports = (phase) => {
 
   return {
     env: {
-      BASE_URL: 'listenrr.bridges.vercel.app'
+      BASE_URL: 'listenrr.ml'
     }
   };
 };
