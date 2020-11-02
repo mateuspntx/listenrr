@@ -1,18 +1,25 @@
-const YoutubeIframe = ({ width, height }) => {
-  const style = {
-    visibility: width > 1 ? 'none' : 'visible',
-    paddingRight: '1rem'
-  };
+import { css } from 'styled-components';
+
+const YoutubeIframe = ({ showPlayer }) => {
+  const IframeStyle = css`
+    width: ${showPlayer ? '480px' : '0'};
+    height: ${showPlayer ? '600px' : '0'};
+    visibility: ${showPlayer ? 'none' : 'visible'};
+    padding-right: 1rem;
+
+    @media (max-width: 615px) {
+      padding-right: 0;
+      height: 200px;
+    }
+  `;
   return (
     <>
       <iframe
         id="youtube__iframe"
         title="youtube__iframe"
         type="text/html"
-        width={width}
-        height={height}
         frameBorder="0"
-        style={style}
+        css={IframeStyle}
       ></iframe>
     </>
   );
