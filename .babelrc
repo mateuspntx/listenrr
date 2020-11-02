@@ -2,7 +2,16 @@
   "presets": ["next/babel"],
   "env": {
     "production": {
-      "plugins": [["transform-remove-console"]]
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "namespace": "lstnr"
+          }
+        ],
+        ["transform-remove-console"]
+      ]
     },
     "development": {
       "plugins": [
