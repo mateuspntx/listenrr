@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Filters = styled.div`
   margin-top: 6rem;
+  height: 7rem;
 
   button {
     background: none;
@@ -13,16 +14,24 @@ const Filters = styled.div`
   }
 
   .h1 {
-    font-size: 2.6rem;
-    color: ${(props) => props.theme.colors.primary};
-    transition: color 0.5s, color 0.5s;
+    font-size: ${(props) =>
+      props.activeFilter == 'trending' ? '2.6rem' : '1.5rem'};
+    color: ${(props) =>
+      props.activeFilter == 'trending'
+        ? props.theme.colors.primary
+        : props.theme.colors.secondary};
+    transition: all ease 0.5s;
   }
 
   .h3 {
-    font-size: 1.5rem;
+    font-size: ${(props) =>
+      props.activeFilter == 'explore' ? '2.6rem' : '1.5rem'};
     font-weight: 400;
-    color: ${(props) => props.theme.colors.secondary};
-    transition: color 0.5s, color 0.5s;
+    color: ${(props) =>
+      props.activeFilter == 'explore'
+        ? props.theme.colors.primary
+        : props.theme.colors.secondary};
+    transition: all ease 0.5s;
   }
 `;
 
