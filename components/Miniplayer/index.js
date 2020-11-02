@@ -29,8 +29,6 @@ import {
 const Miniplayer = () => {
   const miniplayerData = useContext(MiniplayerContext);
   const [expandMiniplayer, setExpandMiniplayer] = useState(false);
-  const [iframeWidth, setIframeWidth] = useState(0);
-  const [iframeHeight, setIframeHeight] = useState(0);
 
   const {
     isShowing,
@@ -62,14 +60,10 @@ const Miniplayer = () => {
 
   const handleExpand = () => {
     setExpandMiniplayer(true);
-    setIframeWidth(680);
-    setIframeHeight(600);
   };
 
   const handleMinimize = () => {
     setExpandMiniplayer(false);
-    setIframeWidth(0);
-    setIframeHeight(0);
   };
 
   const CloseButton = () => {
@@ -147,7 +141,7 @@ const Miniplayer = () => {
           </Button>
         </PlayerActions>
         <ExpandedContainer expandMiniplayer={expandMiniplayer}>
-          <YoutubeIframe width={iframeWidth} height={iframeHeight} />
+          <YoutubeIframe showPlayer={expandMiniplayer} />
           {expandMiniplayer && <ChatIframe radioId={radioId.get} />}
         </ExpandedContainer>
         {expandMiniplayer && <CloseButton />}
