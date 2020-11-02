@@ -41,7 +41,7 @@ export const ExpandedContainer = styled.div`
           grid-gap: 3rem 2rem;
 
           @media (max-width: 615px) {
-            width: 100%;
+            width: 380px;
             grid-gap: 0rem 0rem;
             height: 80vh;
           }
