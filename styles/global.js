@@ -28,6 +28,18 @@ export default createGlobalStyle`
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 
+  @supports (user-select: none) {
+    div {
+      user-select: none;
+    }
+  }
+
+  @supports (-moz-user-select: none) {
+    div {
+      -moz-user-select: none;
+    }
+  }
+
   body {
     background: ${(props) => props.theme.colors.background};
     font-size: 62.5%;
@@ -37,10 +49,4 @@ export default createGlobalStyle`
                 color .5s, color .5s;
     animation: 0.5s ease 0s 1 ${FadeInAnimation};
   }
-
-  @media (min-width: 1920px) {
-    body {
-
-    }
-}
 `;
