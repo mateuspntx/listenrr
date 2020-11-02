@@ -22,7 +22,7 @@ MiniplayerLib.Init = async (htmlElement, videoId) => {
     '#youtube__iframe'
   ).src = await `https://www.youtube.com/embed/${videoId}${options}`;
 
-  new window.YT.Player(htmlElement, {
+  await new window.YT.Player(htmlElement, {
     videoId,
     events: {
       onReady: passPlayerEvent
