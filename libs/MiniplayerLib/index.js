@@ -14,13 +14,13 @@ const passPlayerEvent = (e) => {
 
 const MiniplayerLib = {};
 
-MiniplayerLib.Init = (htmlElement, videoId) => {
+MiniplayerLib.Init = async (htmlElement, videoId) => {
   const options =
     '?autoplay=1&controls=0&enablejsapi=1&fs=0&modestbranding=1&showinfo=0';
 
   $(
     '#youtube__iframe'
-  ).src = `https://www.youtube.com/embed/${videoId}${options}`;
+  ).src = await `https://www.youtube.com/embed/${videoId}${options}`;
 
   new window.YT.Player(htmlElement, {
     videoId,
