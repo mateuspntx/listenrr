@@ -4,8 +4,8 @@ export const Cover = styled.div`
   background: ${(props) => props.theme.colors.shimmerEffect};
   background-size: cover;
   background-position: center;
-  width: 310px;
-  height: 250px;
+  width: 270px;
+  height: 230px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@ export const Cover = styled.div`
 
 export const Title = styled.h1`
   margin-left: 0;
-  width: 80%;
+  width: 75%;
   height: 25px;
   font-size: 1.7rem;
   margin-top: 1.5rem;
@@ -33,7 +33,7 @@ export const Title = styled.h1`
 
 export const Label = styled.h2`
   margin-left: 0;
-  width: 50%;
+  width: 40%;
   height: 20px;
   background: ${(props) => props.theme.colors.shimmerEffect};
   font-size: 1.1rem;
@@ -45,5 +45,5 @@ export const Label = styled.h2`
 export const RadioCardDiv = styled.div`
   ${Cover}
   ${Title}
-    ${Label}
+  ${Label}
 `;
