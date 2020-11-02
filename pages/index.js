@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import AppContainer from '../components/AppContainer';
 import Header from '../components/Header';
@@ -11,6 +11,8 @@ import { Filters, RowContainer } from '../styles/pages/index';
 
 const Home = () => {
   const miniplayerData = useContext(MiniplayerContext);
+
+  const [activeFilter, setActiveFilter] = useState('trending');
 
   const { radiosList, isLoading } = miniplayerData;
 
@@ -31,10 +33,12 @@ const Home = () => {
 
   const setFilter = (filter) => {
     if (filter == 'relevance') {
+      setActiveFilter('trending');
       getData({
         needCache: true
       });
     } else {
+      setActiveFilter('explore');
       getData({
         query: 'lofi',
         maxResults: 50,
@@ -49,7 +53,7 @@ const Home = () => {
         <title>Listenrr</title>
       </Head>
       <Header>
-        <Filters>
+        <Filters activeFilter={activeFilter}>
           <button onClick={() => setFilter('relevance')}>
             <h1 className="h1">Trending</h1>
           </button>
