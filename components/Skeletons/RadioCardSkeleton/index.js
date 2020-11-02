@@ -6,7 +6,7 @@ const RadioCardSkeleton = () => {
     <RadioCardDiv>
       <Cover css={ShimmerEffect} />
       <Title css={ShimmerEffect} />
-      <Label css={ShimmerEffect} />
+      {/* <Label css={ShimmerEffect} /> */}
     </RadioCardDiv>
   );
 };
