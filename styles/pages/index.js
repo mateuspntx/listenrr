@@ -33,6 +33,10 @@ const Filters = styled.div`
         : props.theme.colors.secondary};
     transition: all ease 0.5s;
   }
+
+  @media (max-width: 615px) {
+    margin-top: 10px;
+  }
 `;
 
 const RowContainer = styled.div`
@@ -41,6 +45,12 @@ const RowContainer = styled.div`
   flex-wrap: wrap;
   grid-gap: 3.5rem 7%;
   margin-bottom: 10rem;
+
+  @media (max-width: 615px) {
+    justify-content: center;
+    margin: 1rem 0px;
+    grid-gap: 2rem 5%;
+  }
 `;
 
 export { Filters, RowContainer };

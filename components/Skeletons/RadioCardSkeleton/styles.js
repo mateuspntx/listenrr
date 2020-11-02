@@ -17,6 +17,14 @@ export const Cover = styled.div`
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.555));
     transition: 0.2s;
   }
+
+  @media (max-width: 615px) {
+    border-radius: 5px;
+    width: 100px;
+    height: 85px;
+    /* align-items: flex-start;
+    justify-content: flex-start; */
+  }
 `;
 
 export const Title = styled.h1`
@@ -29,6 +37,12 @@ export const Title = styled.h1`
   transition: color 0.5s;
   background: ${(props) => props.theme.colors.shimmerEffect};
   border-radius: 5px;
+
+  @media (max-width: 615px) {
+    margin-top: 0.5rem;
+    width: 65px;
+    height: 15px;
+  }
 `;
 
 export const Label = styled.h2`
