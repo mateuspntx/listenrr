@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { FadeInAnimation } from '../../styles/global';
 
@@ -15,16 +15,33 @@ export const Container = styled.div`
   background: ${backgroundGradient};
   backdrop-filter: saturate(180%) blur(10px);
   box-shadow: 0px 22px 20px 20px rgb(0 0 0 / 73%);
-  display: flex;
+  display: ${(props) => (props.expandMiniplayer ? 'grid' : 'flex')};
   align-items: center;
   transition: height 0.5s ease;
   animation: 0.2s ease 0s 1 ${FadeInAnimation};
+  overflow: ${(props) => (props.expandMiniplayer ? 'auto' : 'hidden')};
 
   @media (max-width: 615px) {
     padding-left: 0;
     padding-right: 0;
     bottom: -1px;
   }
+`;
+
+export const ExpandedContainer = styled.div`
+  ${(props) =>
+    props.expandMiniplayer
+      ? css`
+          margin-top: -15rem;
+          display: flex;
+          height: 600px;
+          align-items: center;
+          flex-wrap: wrap;
+          grid-gap: 3rem 2rem;
+        `
+      : css`
+          display: none;
+        `}
 `;
 
 export const Button = styled.button`
@@ -121,6 +138,7 @@ export const Volume = styled.div`
 export const PlayerActions = styled.div`
   display: flex;
   align-items: center;
+  margin-top: ${(props) => (props.expandMiniplayer ? '-15rem' : '0px')};
 
   img {
     padding-left: 15px;
