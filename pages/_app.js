@@ -5,7 +5,6 @@ import useDarkMode from 'use-dark-mode';
 
 import Miniplayer from '../components/Miniplayer';
 import { MiniplayerProvider } from '../components/Miniplayer/MiniplayerContext';
-import YoutubeIframe from '../components/YoutubeIframe';
 import MiniplayerLib from '../libs/MiniplayerLib';
 import GlobalStyle from '../styles/global';
 import darkTheme from '../styles/themes/dark';
@@ -52,7 +51,6 @@ const Listenrr = ({ Component, pageProps }) => {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <MiniplayerProvider>
-        <YoutubeIframe />
         <ThemeProvider theme={theme}>
           {isMounted && <Component {...pageProps} />}
           <GlobalStyle />
