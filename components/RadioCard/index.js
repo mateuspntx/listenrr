@@ -1,16 +1,48 @@
-import { RadioCardDiv, Cover,Title, Label } from './styles';
-import { playIcon } from '../../utils/Icons';
+import { useContext } from 'react';
 
-const RadioCard = () => {
+import MiniplayerLib from '../../libs/MiniplayerLib';
+import { playIcon } from '../../utils/Icons';
+import ListenersCount from '../ListenersCount';
+import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
+import { Cover, Label, RadioCardDiv, Title } from './styles';
+
+const RadioCard = ({ coverUrl, channelTitle, videoId, showListenersCount }) => {
+  const miniplayerData = useContext(MiniplayerContext);
+
+  const {
+    isShowing,
+    isPlaying,
+    radioName,
+    radioId,
+    radioCoverUrl
+  } = miniplayerData;
+
+  const handleMiniplayer = () => {
+    radioId.set(videoId);
+    radioName.set(channelTitle);
+    radioCoverUrl.set(coverUrl);
+    isShowing.set(true);
+    isPlaying.set(true);
+    MiniplayerLib.Init('youtube__iframe', videoId);
+  };
+
   return (
-    <RadioCardDiv>
-      <Cover cover="./assets/images/cover.jpg">
-        <img src={playIcon} alt="Play"/>
+    <RadioCardDiv onClick={() => handleMiniplayer()}>
+      <Cover cover={coverUrl}>
+        <img src={playIcon} alt="Play" />
       </Cover>
-      <Title>ChilledCow</Title>
-      <Label>7,835 listeners</Label>
+      <Title>{channelTitle}</Title>
+      <Label>
+        {showListenersCount ? (
+          <>
+            <ListenersCount videoId={videoId} /> listeners
+          </>
+        ) : (
+          ''
+        )}
+      </Label>
     </RadioCardDiv>
-  )
-}
+  );
+};
 
 export default RadioCard;

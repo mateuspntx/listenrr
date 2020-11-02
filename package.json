@@ -1,21 +1,32 @@
 {
   "name": "listenrr-v4",
-  "version": "0.1.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "next": "9.5.2",
+    "lodash": "^4.17.20",
+    "next": "^10.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.1.1",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.11.1"
+    "babel-plugin-styled-components": "^1.11.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-simple-import-sort": "^5.0.3"
   }
 }

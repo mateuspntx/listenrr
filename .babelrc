@@ -1,13 +1,28 @@
 {
-  "presets": [
-    "next/babel"
-  ],
-  "plugins": [
-    ["babel-plugin-styled-components", 
-      { 
-        "ssr": true,
-        "namespace": "lstnr"
-      }
-    ]
-  ]
+  "presets": ["next/babel"],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "namespace": "lstnr"
+          }
+        ],
+        ["transform-remove-console"]
+      ]
+    },
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true,
+            "namespace": "lstnr"
+          }
+        ]
+      ]
+    }
+  }
 }

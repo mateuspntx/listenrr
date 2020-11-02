@@ -1,6 +1,11 @@
-import Input from '../Input';
-import ThemeSwitcher from '../ThemeSwitcher'
+import { debounce } from 'lodash';
+import { useContext, useRef } from 'react';
+
+import { getRadios } from '../../services/api';
 import { searchIcon } from '../../utils/Icons';
+import Input from '../Input';
+import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
+import ThemeSwitcher from '../ThemeSwitcher';
 import { Container, LogoText } from './styles';
 
 const ThemeSwitcherStyles = `
@@ -11,7 +16,7 @@ const ThemeSwitcherStyles = `
     margin-right: auto;
     margin-top: 30px;
   }
-`
+`;
 
 const SearchInputStyles = {
   marginTop: '15px',
@@ -21,22 +26,57 @@ const SearchInputStyles = {
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'right',
   backgroundOrigin: 'content-box',
-  backgroundSize: 'auto',
-}
+  backgroundSize: 'auto'
+};
 
-const Header = (props) => {
+const Header = ({ children }) => {
+  const miniplayerData = useContext(MiniplayerContext);
+
+  const { radiosList, isLoading } = miniplayerData;
+
+  const debounceFetch = useRef(
+    debounce(async (value) => {
+      if (value) {
+        radiosList.set(
+          await getRadios({
+            query: value,
+            filter: 'relevance',
+            maxResults: 50
+          })
+        );
+      } else {
+        radiosList.set(
+          await getRadios({
+            needCache: true
+          })
+        );
+      }
+
+      isLoading.set(false);
+    }, 500)
+  ).current;
+
+  const handleSearch = (e) => {
+    isLoading.set(true);
+    debounceFetch(e.target.value);
+  };
+
   return (
     <>
-    <Container>
-      <LogoText>Listenrr</LogoText>
-      <Input type="text" style={SearchInputStyles} name="search" placeholder="What radio are you looking for?"/>
-      <ThemeSwitcher css={ThemeSwitcherStyles}/>
-    </Container>
-
-    { props.children }
-
+      <Container>
+        <LogoText>Listenrr</LogoText>
+        <Input
+          type="text"
+          style={SearchInputStyles}
+          name="search"
+          placeholder="What radio are you looking for?"
+          onChange={handleSearch}
+        />
+        <ThemeSwitcher css={ThemeSwitcherStyles} />
+      </Container>
+      {children}
     </>
-  )
+  );
 };
 
 export default Header;

@@ -8,12 +8,12 @@ export const Container = styled.div`
 `;
 
 export const LogoText = styled.div`
-  color: ${props => props.theme.colors.logoText};
+  color: ${(props) => props.theme.colors.logoText};
   font-family: 'Pacifico';
   font-size: 70px;
   /*margin-left: 9.50%;*/
   margin-left: 15px;
-  transition: color .5s, color .5s;
+  transition: color 0.5s, color 0.5s;
 
   @media (max-width: 615px) {
     margin: 0;
