@@ -6,8 +6,8 @@ export const Cover = styled.div`
   background: #232f35;
   background-image: url(${(props) => CSS.escape(props.cover)});
   background-position: center;
-  width: 310px;
-  height: 250px;
+  width: 270px;
+  height: 230px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,8 +31,8 @@ export const Cover = styled.div`
 `;
 
 export const Title = styled.h1`
-  width: 310px;
-  font-size: 1.7rem;
+  width: 270px;
+  font-size: 1.5rem;
   margin-top: 1rem;
   font-weight: 500;
   transition: color 0.5s;
