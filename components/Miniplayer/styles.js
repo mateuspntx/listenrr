@@ -18,7 +18,9 @@ export const Container = styled.div`
   display: ${(props) => (props.expandMiniplayer ? 'grid' : 'flex')};
   align-items: center;
   transition: height 0.5s ease;
+  grid-gap: 0rem 3%;
   animation: 0.2s ease 0s 1 ${FadeInAnimation};
+
   overflow: ${(props) => (props.expandMiniplayer ? 'auto' : 'hidden')};
 
   @media (max-width: 615px) {
@@ -33,15 +35,15 @@ export const ExpandedContainer = styled.div`
     props.expandMiniplayer
       ? css`
           display: flex;
-          margin-top: -15rem;
           height: 600px;
           align-items: center;
           flex-wrap: wrap;
           grid-gap: 3rem 2rem;
 
           @media (max-width: 615px) {
-            width: 400px;
-            grid-gap: 1rem 0rem;
+            width: 100%;
+            grid-gap: 0rem 0rem;
+            height: 80vh;
           }
         `
       : css`
@@ -152,7 +154,7 @@ export const Volume = styled.div`
 export const PlayerActions = styled.div`
   display: flex;
   align-items: center;
-  margin-top: ${(props) => (props.expandMiniplayer ? '-15rem' : '0px')};
+  margin-top: ${(props) => (props.expandMiniplayer ? '0rem' : '0px')};
 
   img {
     padding-left: 15px;
