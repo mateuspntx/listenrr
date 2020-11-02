@@ -19,6 +19,15 @@ export default createGlobalStyle`
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
+  input,
+  div,
+  textarea,
+  button,
+  select,
+  a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+
   body {
     background: ${(props) => props.theme.colors.background};
     font-size: 62.5%;
