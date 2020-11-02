@@ -22,6 +22,7 @@ import {
   RadioInfo,
   Slider,
   SliderContainer,
+  Thumb,
   Volume
 } from './styles';
 
@@ -39,14 +40,6 @@ const Miniplayer = () => {
     radioId,
     radioCoverUrl
   } = miniplayerData;
-
-  const Thumb = `
-    width: 35px;
-    height: 35px;
-    background: url('${radioCoverUrl.get}'), #232f35;
-    background-size: cover;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
-  `;
 
   const handleMiniplayerPause = () => {
     MiniplayerLib.Pause();
@@ -100,7 +93,7 @@ const Miniplayer = () => {
     return (
       <Container expandMiniplayer={expandMiniplayer}>
         <RadioInfo>
-          <div css={Thumb} />
+          <Thumb src={radioCoverUrl.get} />
           <h3>
             {radioName.get}
             <span>

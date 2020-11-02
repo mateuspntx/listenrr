@@ -44,6 +44,15 @@ export const ExpandedContainer = styled.div`
         `}
 `;
 
+export const Thumb = styled.div`
+  width: 35px;
+  height: 35px;
+  background: url('${(props) => props.src}'), #232f35;
+  background-position: center;
+  background-size: 65px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+`;
+
 export const Button = styled.button`
   background: none;
   border: none;
@@ -148,6 +157,7 @@ export const PlayerActions = styled.div`
   @media (max-width: 615px) {
     img {
       padding-left: 10px;
+      width: 2rem;
     }
   }
 `;
