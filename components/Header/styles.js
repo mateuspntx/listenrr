@@ -14,8 +14,9 @@ export const ThemeSwitcherStyles = css`
   margin-top: 15px;
 
   @media (max-width: 615px) {
-    position: absolute;
-    right: 10%;
+    position: relative;
+    right: 0px;
+    top: -70px;
     margin-top: -20px;
   }
 `;
