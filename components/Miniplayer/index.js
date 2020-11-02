@@ -12,10 +12,12 @@ import {
 } from '../../utils/Icons';
 import ChatIframe from '../ChatIframe';
 import ListenersCount from '../ListenersCount';
+import YoutubeIframe from '../YoutubeIframe';
 import { MiniplayerContext } from './MiniplayerContext';
 import {
   Button,
   Container,
+  ExpandedContainer,
   PlayerActions,
   RadioInfo,
   Slider,
@@ -26,6 +28,8 @@ import {
 const Miniplayer = () => {
   const miniplayerData = useContext(MiniplayerContext);
   const [expandMiniplayer, setExpandMiniplayer] = useState(false);
+  const [iframeWidth, setIframeWidth] = useState(0);
+  const [iframeHeight, setIframeHeight] = useState(0);
 
   const {
     isShowing,
@@ -65,10 +69,14 @@ const Miniplayer = () => {
 
   const handleExpand = () => {
     setExpandMiniplayer(true);
+    setIframeWidth(680);
+    setIframeHeight(600);
   };
 
   const handleMinimize = () => {
     setExpandMiniplayer(false);
+    setIframeWidth(0);
+    setIframeHeight(0);
   };
 
   const CloseButton = () => {
@@ -100,7 +108,7 @@ const Miniplayer = () => {
             </span>
           </h3>
         </RadioInfo>
-        <PlayerActions>
+        <PlayerActions expandMiniplayer={expandMiniplayer}>
           {isPlaying.get ? (
             <Button onClick={handleMiniplayerPause}>
               <img
@@ -145,11 +153,11 @@ const Miniplayer = () => {
             />
           </Button>
         </PlayerActions>
-        {expandMiniplayer && (
-          <>
-            <ChatIframe radioId={radioId.get} /> <CloseButton />
-          </>
-        )}
+        <ExpandedContainer expandMiniplayer={expandMiniplayer}>
+          <YoutubeIframe width={iframeWidth} height={iframeHeight} />
+          {expandMiniplayer && <ChatIframe radioId={radioId.get} />}
+        </ExpandedContainer>
+        {expandMiniplayer && <CloseButton />}
       </Container>
     );
   } else {
