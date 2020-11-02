@@ -32,12 +32,17 @@ export const ExpandedContainer = styled.div`
   ${(props) =>
     props.expandMiniplayer
       ? css`
-          margin-top: -15rem;
           display: flex;
+          margin-top: -15rem;
           height: 600px;
           align-items: center;
           flex-wrap: wrap;
           grid-gap: 3rem 2rem;
+
+          @media (max-width: 615px) {
+            width: 400px;
+            grid-gap: 1rem 0rem;
+          }
         `
       : css`
           display: none;
