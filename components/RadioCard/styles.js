@@ -22,6 +22,13 @@ export const Cover = styled.div`
   }
 
   @media (max-width: 615px) {
+    border-radius: 5px;
+    width: 100px;
+    height: 85px;
+    background-size: 150px;
+    align-items: flex-start;
+    justify-content: flex-start;
+
     img {
       display: none;
     }
@@ -37,6 +44,16 @@ export const Title = styled.h1`
   font-weight: 500;
   transition: color 0.5s;
   color: ${(props) => props.theme.colors.primary};
+
+  @media (max-width: 615px) {
+    margin-top: 0.5rem;
+    width: 100px;
+    font-size: 15px;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const Label = styled.h2`
@@ -52,5 +69,15 @@ export const RadioCardDiv = styled.div`
 
   &:hover {
     transform: scale(1.03);
+  }
+
+  @media (max-width: 615px) {
+    width: 100px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    &:hover {
+      transform: scale(1);
+    }
   }
 `;

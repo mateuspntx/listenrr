@@ -18,7 +18,9 @@ export const Container = styled.div`
   display: ${(props) => (props.expandMiniplayer ? 'grid' : 'flex')};
   align-items: center;
   transition: height 0.5s ease;
+  grid-gap: 0rem 3%;
   animation: 0.2s ease 0s 1 ${FadeInAnimation};
+
   overflow: ${(props) => (props.expandMiniplayer ? 'auto' : 'hidden')};
 
   @media (max-width: 615px) {
@@ -32,16 +34,30 @@ export const ExpandedContainer = styled.div`
   ${(props) =>
     props.expandMiniplayer
       ? css`
-          margin-top: -15rem;
           display: flex;
           height: 600px;
           align-items: center;
           flex-wrap: wrap;
           grid-gap: 3rem 2rem;
+
+          @media (max-width: 615px) {
+            width: 380px;
+            grid-gap: 0rem 0rem;
+            height: 80vh;
+          }
         `
       : css`
           display: none;
         `}
+`;
+
+export const Thumb = styled.div`
+  width: 35px;
+  height: 35px;
+  background: url('${(props) => props.src}'), #232f35;
+  background-position: center;
+  background-size: 65px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
 `;
 
 export const Button = styled.button`
@@ -138,7 +154,7 @@ export const Volume = styled.div`
 export const PlayerActions = styled.div`
   display: flex;
   align-items: center;
-  margin-top: ${(props) => (props.expandMiniplayer ? '-15rem' : '0px')};
+  margin-top: ${(props) => (props.expandMiniplayer ? '0rem' : '0px')};
 
   img {
     padding-left: 15px;
@@ -148,6 +164,7 @@ export const PlayerActions = styled.div`
   @media (max-width: 615px) {
     img {
       padding-left: 10px;
+      width: 2rem;
     }
   }
 `;

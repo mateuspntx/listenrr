@@ -33,6 +33,24 @@ const Filters = styled.div`
         : props.theme.colors.secondary};
     transition: all ease 0.5s;
   }
+
+  @media (max-width: 615px) {
+    margin-top: 20px;
+
+    .h1 {
+      font-size: ${(props) =>
+        props.activeFilter == 'trending' ? '1.8rem' : '1.5rem'};
+      font-weight: ${(props) =>
+        props.activeFilter == 'trending' ? '400' : '300'};
+    }
+
+    .h3 {
+      font-size: ${(props) =>
+        props.activeFilter == 'explore' ? '1.8rem' : '1.3rem'};
+      font-weight: ${(props) =>
+        props.activeFilter == 'explore' ? '400' : '300'};
+    }
+  }
 `;
 
 const RowContainer = styled.div`
@@ -41,6 +59,12 @@ const RowContainer = styled.div`
   flex-wrap: wrap;
   grid-gap: 3.5rem 7%;
   margin-bottom: 10rem;
+
+  @media (max-width: 615px) {
+    justify-content: center;
+    margin: -10px 0px;
+    grid-gap: 2rem 3%;
+  }
 `;
 
 export { Filters, RowContainer };

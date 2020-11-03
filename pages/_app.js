@@ -1,9 +1,10 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 
-import Miniplayer from '../components/Miniplayer';
+const Miniplayer = dynamic(() => import('../components/Miniplayer'));
 import { MiniplayerProvider } from '../components/Miniplayer/MiniplayerContext';
 import MiniplayerLib from '../libs/MiniplayerLib';
 import GlobalStyle from '../styles/global';
