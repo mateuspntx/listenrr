@@ -9,7 +9,8 @@ const ChatIframe = ({ radioId }) => {
     height: 100%;
 
     @media (max-width: 615px) {
-      height: 500px;
+      width: 100%;
+      height: 800px;
     }
   `;
 
