@@ -86,7 +86,7 @@ const Miniplayer = () => {
   if (isShowing.get) {
     return (
       <Container expandMiniplayer={expandMiniplayer}>
-        <RadioInfo>
+        <RadioInfo expandMiniplayer={expandMiniplayer}>
           <Thumb src={radioCoverUrl.get} />
           <h3>
             {radioName.get}

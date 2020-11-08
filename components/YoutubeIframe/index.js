@@ -9,7 +9,8 @@ const YoutubeIframe = ({ showPlayer }) => {
 
     @media (max-width: 615px) {
       padding-right: 0;
-      height: 200px;
+      width: 100%;
+      height: 220px;
     }
   `;
   return (

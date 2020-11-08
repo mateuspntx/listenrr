@@ -39,11 +39,13 @@ export const ExpandedContainer = styled.div`
           align-items: center;
           flex-wrap: wrap;
           grid-gap: 3rem 2rem;
+          padding-bottom: 2rem;
 
           @media (max-width: 615px) {
-            width: 380px;
+            width: 100%;
             grid-gap: 0rem 0rem;
             height: 80vh;
+            margin: 0;
           }
         `
       : css`
@@ -76,6 +78,7 @@ export const RadioInfo = styled.div`
   grid-template-columns: repeat(3, 3rem);
   grid-gap: 0 10px;
   align-items: center;
+  padding: ${(props) => (props.expandMiniplayer ? '3rem 0 1rem 0' : '0')};
 
   h3 {
     color: #ffffff;
@@ -155,16 +158,22 @@ export const PlayerActions = styled.div`
   display: flex;
   align-items: center;
   margin-top: ${(props) => (props.expandMiniplayer ? '0rem' : '0px')};
+  padding: ${(props) => (props.expandMiniplayer ? '1rem 0 2rem 0' : '0')};
 
   img {
-    padding-left: 15px;
+    padding-left: 7px;
+    padding-right: 7px;
+
     width: 2.4rem;
   }
 
   @media (max-width: 615px) {
     img {
-      padding-left: 10px;
-      width: 2rem;
+      padding-left: 7px;
+      padding-right: 7px;
+      width: 2.2rem;
     }
+
+    ${(props) => (props.expandMiniplayer ? 'transform: scale(2);' : '')}
   }
 `;
