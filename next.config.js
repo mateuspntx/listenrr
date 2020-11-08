@@ -4,14 +4,14 @@ module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       env: {
-        BASE_URL: 'localhost'
+        BASE_URL: process.env.DEV_BASE_URL
       }
     };
   }
 
   return {
     env: {
-      BASE_URL: 'listenrr.ml'
+      BASE_URL: process.env.BASE_URL
     }
   };
 };
