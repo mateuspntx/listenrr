@@ -5,11 +5,16 @@
     {
       "src": "img/headphone-icon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#0A1A20",
-  "background_color": "#0A1A20"
+  "orientation": "portrait",
+  "theme_color": "rgba(0,0,0,0)",
+  "background_color": "#F8F8F8",
+  "developer": {
+    "name": "Mateus Pontes",
+    "url": "https://mateuspntx.ml/"
+  }
 }

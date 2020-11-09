@@ -10,6 +10,28 @@ const passPlayerEvent = (e) => {
   }
 
   Player = e;
+
+  const iframe = $('#youtube__iframe');
+
+  const message = function (func) {
+    return JSON.stringify({
+      event: 'command',
+      func: func,
+      args: []
+    });
+  };
+
+  const execCommand = function (iframe) {
+    return function (func) {
+      return function () {
+        iframe.contentWindow.postMessage(message(func), '*');
+      };
+    };
+  };
+
+  const iframeCommand = execCommand(iframe);
+
+  iframeCommand(e.target.playVideo());
 };
 
 const MiniplayerLib = {};
@@ -24,6 +46,9 @@ MiniplayerLib.Init = async (htmlElement, videoId) => {
 
   new window.YT.Player(htmlElement, {
     videoId,
+    playerVars: {
+      autoplay: 1
+    },
     events: {
       onReady: passPlayerEvent
     }
