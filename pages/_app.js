@@ -24,12 +24,32 @@ const Listenrr = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+        <link rel="dns-prefetch" href="https://i.ytimg.com/" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com/" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
+
+        <link rel="preconnect" href="https://i.ytimg.com/" crossOrigin="true" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com/"
+          crossOrigin="true"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com/"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;600&display=swap"
+          rel="preload"
+          as="style"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;600&display=swap"
           rel="stylesheet"
         />
         <link rel="shortcut icon" href="/assets/images/headphone-icon.png" />
-        <meta name="author" content="mateuspl[at]pm.me" />
+        <meta name="author" content="https://mateuspntx.ml/" />
         <meta id="og:title" name="og:title" content="Listenrr" />
         <meta
           name="description"
