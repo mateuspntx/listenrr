@@ -21,6 +21,7 @@ const YoutubeIframe = ({ showPlayer }) => {
         type="text/html"
         frameBorder="0"
         css={IframeStyle}
+        allow="autoplay"
       ></iframe>
     </>
   );
