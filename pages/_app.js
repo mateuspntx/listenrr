@@ -68,7 +68,7 @@ const Listenrr = ({ Component, pageProps }) => {
           name="viewport"
           content="width=device-width,initial-scale=1,shrink-to-fit=no"
         />
-        <meta name="theme-color" content="#0A1A20" />
+        <meta name="theme-color" content="rgba(0,0,0,0)" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <MiniplayerProvider>
