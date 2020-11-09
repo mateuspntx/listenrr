@@ -78,7 +78,8 @@ export const RadioInfo = styled.div`
   grid-template-columns: repeat(3, 3rem);
   grid-gap: 0 10px;
   align-items: center;
-  padding: ${(props) => (props.expandMiniplayer ? '3rem 0 1rem 0' : '0')};
+  padding: ${(props) => (props.expandMiniplayer ? '4rem 0 2rem 0' : '0')};
+  ${(props) => (props.expandMiniplayer ? 'transform: scale(1.4);' : '')}
 
   h3 {
     color: #ffffff;
@@ -159,6 +160,7 @@ export const PlayerActions = styled.div`
   align-items: center;
   margin-top: ${(props) => (props.expandMiniplayer ? '0rem' : '0px')};
   padding: ${(props) => (props.expandMiniplayer ? '1rem 0 2rem 0' : '0')};
+  ${(props) => (props.expandMiniplayer ? 'transform: scale(1.5);' : '')}
 
   img {
     padding-left: 7px;
