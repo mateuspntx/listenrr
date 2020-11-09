@@ -58,11 +58,11 @@ const RowContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   grid-gap: 3.5rem 7%;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 
   @media (max-width: 615px) {
     justify-content: center;
-    margin: -10px 0px;
+
     grid-gap: 2rem 3%;
   }
 `;
