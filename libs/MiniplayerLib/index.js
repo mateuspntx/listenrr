@@ -11,7 +11,27 @@ const passPlayerEvent = (e) => {
 
   Player = e;
 
-  e.target.playVideo();
+  const iframe = $('#youtube__iframe');
+
+  const message = function (func) {
+    return JSON.stringify({
+      event: 'command',
+      func: func,
+      args: []
+    });
+  };
+
+  const execCommand = function (iframe) {
+    return function (func) {
+      return function () {
+        iframe.contentWindow.postMessage(message(func), '*');
+      };
+    };
+  };
+
+  const iframeCommand = execCommand(iframe);
+
+  iframeCommand(e.target.playVideo());
 };
 
 const MiniplayerLib = {};
