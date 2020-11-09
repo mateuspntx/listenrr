@@ -10,6 +10,8 @@ const passPlayerEvent = (e) => {
   }
 
   Player = e;
+
+  e.target.playVideo();
 };
 
 const MiniplayerLib = {};
@@ -24,6 +26,9 @@ MiniplayerLib.Init = async (htmlElement, videoId) => {
 
   new window.YT.Player(htmlElement, {
     videoId,
+    playerVars: {
+      autoplay: 1
+    },
     events: {
       onReady: passPlayerEvent
     }
