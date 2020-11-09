@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const playBtnHover = '${RadioCardDiv}:hover img {opacity: 1;}';
 
 export const Cover = styled.div`
-  background: #232f35;
+  background: ${(props) => props.theme.colors.shimmerEffect};
   background-image: url(${(props) => CSS.escape(props.cover)});
   background-position: center;
   width: 270px;
