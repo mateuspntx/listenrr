@@ -20,8 +20,8 @@ export const Container = styled.div`
   transition: height 0.5s ease;
   grid-gap: 0rem 3%;
   animation: 0.2s ease 0s 1 ${FadeInAnimation};
-
   overflow: ${(props) => (props.expandMiniplayer ? 'auto' : 'hidden')};
+  will-change: height;
 
   @media (max-width: 615px) {
     padding-left: 0;
