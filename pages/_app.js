@@ -50,20 +50,42 @@ const Listenrr = ({ Component, pageProps }) => {
         />
         <link rel="shortcut icon" href="/assets/images/headphone-icon.png" />
         <meta name="author" content="https://mateuspntx.ml/" />
-        <meta id="og:title" name="og:title" content="Listenrr" />
+
+        <title>Listenrr - Youtube radios in one place</title>
+        <meta name="title" content="Listenrr - Youtube radios in one place" />
         <meta
           name="description"
-          content="Listenrr - YouTube radios in one place"
+          content="Now you can listen to all livestream radios from Youtube in one place. Become a listenrr!"
+        />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://listenrr.ml/" />
+        <meta
+          property="og:title"
+          content="Listenrr - Youtube radios in one place"
         />
         <meta
-          id="og:description"
-          name="og:description"
-          content="Listenrr - YouTube radios in one place"
+          property="og:description"
+          content="Now you can listen to all livestream radios from Youtube in one place. Become a listenrr!"
         />
+        <meta property="og:image" content="/meta-background.png" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://listenrr.ml/" />
+        <meta
+          property="twitter:title"
+          content="Listenrr - Youtube radios in one place"
+        />
+        <meta
+          property="twitter:description"
+          content="Now you can listen to all livestream radios from Youtube in one place. Become a listenrr!"
+        />
+        <meta property="twitter:image" content="/meta-background.png" />
+
         <meta name="robots" content="index,follow" />
         <meta name="application-name" content="Listenrr" />
-        <meta name="og:type" content="website" id="og:type" />
-        <meta name="og:site_name" content="Listenrr" id="og:site_name" />
+        <meta name="og:type" content="website" />
+        <meta name="og:site_name" content="Listenrr" />
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,shrink-to-fit=no"
