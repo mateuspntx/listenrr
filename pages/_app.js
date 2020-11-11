@@ -68,7 +68,10 @@ const Listenrr = ({ Component, pageProps }) => {
           property="og:description"
           content="Now you can listen to all livestream radios from Youtube in one place. Become a listenrr!"
         />
-        <meta property="og:image" content="/meta-background.png" />
+        <meta
+          property="og:image"
+          content="/assets/images/meta-background.png"
+        />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://listenrr.ml/" />
@@ -80,7 +83,10 @@ const Listenrr = ({ Component, pageProps }) => {
           property="twitter:description"
           content="Now you can listen to all livestream radios from Youtube in one place. Become a listenrr!"
         />
-        <meta property="twitter:image" content="/meta-background.png" />
+        <meta
+          property="twitter:image"
+          content="/assets/images/meta-background.png"
+        />
 
         <meta name="robots" content="index,follow" />
         <meta name="application-name" content="Listenrr" />
