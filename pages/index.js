@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useContext, useEffect, useState } from 'react';
 
 import AppContainer from '../components/AppContainer';
@@ -49,9 +48,6 @@ const Home = () => {
 
   return (
     <AppContainer>
-      <Head>
-        <title>Listenrr</title>
-      </Head>
       <Header>
         <Filters activeFilter={activeFilter}>
           <button onClick={() => setFilter('relevance')}>
