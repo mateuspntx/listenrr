@@ -54,6 +54,7 @@ export const AboutButton = styled.button`
   border-bottom: 1px solid #848484;
   color: ${(props) => props.theme.colors.primary};
   cursor: pointer;
+  outline: none;
 
   @media (max-width: 615px) {
     position: relative;
