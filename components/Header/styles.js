@@ -9,20 +9,13 @@ export const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-export const ThemeSwitcherStyles = css`
+export const Menu = styled.div`
+  display: flex;
   margin-right: 0px;
-  margin-top: 15px;
-
-  @media (max-width: 615px) {
-    position: relative;
-    right: 0px;
-    top: -70px;
-    margin-top: -20px;
-  }
 `;
 
 export const SearchInputStyles = css`
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 0px;
   width: 30rem;
   background: url(${searchIcon});
@@ -40,12 +33,33 @@ export const LogoText = styled.div`
   color: ${(props) => props.theme.colors.logoText};
   font-family: 'Pacifico';
   font-size: 70px;
-  margin-left: 15px;
+  margin-left: 0px;
   transition: color 0.5s, color 0.5s;
+  cursor: pointer;
 
   @media (max-width: 615px) {
     position: relative;
     margin-left: 1px;
     font-size: 40px;
+  }
+`;
+
+export const AboutButton = styled.button`
+  margin-right: 1.5rem;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  background: none;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #848484;
+  color: ${(props) => props.theme.colors.primary};
+  cursor: pointer;
+
+  @media (max-width: 615px) {
+    position: relative;
+    right: -20px;
+    top: -80px;
+    margin-top: -20px;
+    border-bottom: unset;
   }
 `;
