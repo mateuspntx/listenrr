@@ -24,6 +24,7 @@ const Button = styled.button`
   border: none;
   border-bottom: 1px solid #848484;
   cursor: pointer;
+  outline: none;
 
   &:hover {
     animation: ${buttonAnimation} 1s ease-in-out infinite;
