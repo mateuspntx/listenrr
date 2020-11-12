@@ -1,5 +1,6 @@
 import { debounce } from 'lodash';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useContext, useRef } from 'react';
 
 import { getRadios } from '../../services/api';
@@ -15,6 +16,8 @@ import {
 } from './styles';
 
 const Header = ({ children }) => {
+  const router = useRouter();
+
   const miniplayerData = useContext(MiniplayerContext);
 
   const { radiosList, isLoading } = miniplayerData;
@@ -22,13 +25,7 @@ const Header = ({ children }) => {
   const debounceFetch = useRef(
     debounce(async (value) => {
       if (value) {
-        radiosList.set(
-          await getRadios({
-            query: value,
-            filter: 'relevance',
-            maxResults: 50
-          })
-        );
+        router.push(`/?q=${value}`);
       } else {
         radiosList.set(
           await getRadios({
