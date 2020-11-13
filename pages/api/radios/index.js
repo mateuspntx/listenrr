@@ -8,7 +8,7 @@ export default async (req, res) => {
     query: { q, order, maxResults }
   } = req;
 
-  const defaultParams = `part=snippet&videoCategoryId=10&eventType=live`;
+  const defaultParams = `part=snippet&videoCategoryId=10&eventType=live&videoEmbeddable=true`;
   const url = `https://www.googleapis.com/youtube/v3/search?q=${q}&order=${order}&${defaultParams}&maxResults=${maxResults}&type=video&key=${key}`;
 
   try {

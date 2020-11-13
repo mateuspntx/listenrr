@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
 import {
@@ -27,6 +28,7 @@ import {
 } from './styles';
 
 const Miniplayer = () => {
+  const router = useRouter();
   const miniplayerData = useContext(MiniplayerContext);
   const [expandMiniplayer, setExpandMiniplayer] = useState(false);
 
@@ -38,6 +40,20 @@ const Miniplayer = () => {
     radioId,
     radioCoverUrl
   } = miniplayerData;
+
+  useEffect(() => {
+    const changeExpandMiniplayer = (url) => {
+      url.includes('?expandMiniplayer')
+        ? setExpandMiniplayer(true)
+        : setExpandMiniplayer(false);
+    };
+
+    router.events.on('routeChangeStart', changeExpandMiniplayer);
+
+    return () => {
+      router.events.off('routeChangeStart', changeExpandMiniplayer);
+    };
+  }, [expandMiniplayer]);
 
   const handleMiniplayerPause = () => {
     MiniplayerLib.Pause();
@@ -60,6 +76,7 @@ const Miniplayer = () => {
 
   const handleExpand = () => {
     setExpandMiniplayer(true);
+    router.push('/', '?expandMiniplayer');
   };
 
   const handleMinimize = () => {

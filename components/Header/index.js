@@ -1,38 +1,32 @@
 import { debounce } from 'lodash';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useContext, useRef } from 'react';
 
-import { getRadios } from '../../services/api';
 import Input from '../Input';
 import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
 import ThemeSwitcher from '../ThemeSwitcher';
 import {
+  AboutButton,
   Container,
   LogoText,
-  SearchInputStyles,
-  ThemeSwitcherStyles
+  Menu,
+  SearchInputStyles
 } from './styles';
 
 const Header = ({ children }) => {
+  const router = useRouter();
+
   const miniplayerData = useContext(MiniplayerContext);
 
-  const { radiosList, isLoading } = miniplayerData;
+  const { isLoading } = miniplayerData;
 
   const debounceFetch = useRef(
     debounce(async (value) => {
       if (value) {
-        radiosList.set(
-          await getRadios({
-            query: value,
-            filter: 'relevance',
-            maxResults: 50
-          })
-        );
+        router.push(`/?q=${value}`);
       } else {
-        radiosList.set(
-          await getRadios({
-            needCache: true
-          })
-        );
+        router.push('/');
       }
 
       isLoading.set(false);
@@ -47,7 +41,9 @@ const Header = ({ children }) => {
   return (
     <>
       <Container>
-        <LogoText>Listenrr</LogoText>
+        <Link href="/">
+          <LogoText>Listenrr</LogoText>
+        </Link>
         <Input
           type="text"
           css={SearchInputStyles}
@@ -55,7 +51,12 @@ const Header = ({ children }) => {
           placeholder="What radio are you looking for?"
           onChange={handleSearch}
         />
-        <ThemeSwitcher css={ThemeSwitcherStyles} />
+        <Menu>
+          <Link href="/about">
+            <AboutButton>About</AboutButton>
+          </Link>
+          <ThemeSwitcher />
+        </Menu>
       </Container>
       {children}
     </>

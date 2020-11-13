@@ -17,10 +17,26 @@ const buttonAnimation = keyframes`
   }
 `;
 
-const Button = styled.img`
+const Button = styled.button`
+  background: none;
+  margin-top: 15px;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #848484;
+  cursor: pointer;
+  outline: none;
+
   &:hover {
     animation: ${buttonAnimation} 1s ease-in-out infinite;
     animation-direction: alternate;
+  }
+
+  @media (max-width: 615px) {
+    position: relative;
+    right: 0px;
+    top: -75px;
+    margin-top: -20px;
+    border-bottom: unset;
   }
 `;
 
@@ -30,9 +46,13 @@ const ThemeSwitcher = (props) => {
   return (
     <>
       {darkMode.value ? (
-        <Button {...props} src={lightModeIcon} onClick={darkMode.disable} />
+        <Button {...props} onClick={darkMode.disable}>
+          <img src={lightModeIcon} alt="Disable dark mode" />
+        </Button>
       ) : (
-        <Button {...props} src={darkModeIcon} onClick={darkMode.enable} />
+        <Button {...props} onClick={darkMode.enable}>
+          <img src={darkModeIcon} alt="Enable dark mode" />
+        </Button>
       )}
     </>
   );

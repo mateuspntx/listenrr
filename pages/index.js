@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 
 import AppContainer from '../components/AppContainer';
@@ -9,6 +10,9 @@ import { getRadios } from '../services/api';
 import { Filters, RowContainer } from '../styles/pages/index';
 
 const Home = () => {
+  const router = useRouter();
+  const searchQuery = router.query.q;
+
   const miniplayerData = useContext(MiniplayerContext);
 
   const [activeFilter, setActiveFilter] = useState('trending');
@@ -22,13 +26,21 @@ const Home = () => {
   }
 
   useEffect(() => {
-    getData({
-      query: 'lofi',
-      filter: 'relevance',
-      maxResults: 50,
-      needCache: true
-    });
-  }, []);
+    if (!searchQuery) {
+      getData({
+        query: 'lofi',
+        filter: 'relevance',
+        maxResults: 50,
+        needCache: true
+      });
+    } else {
+      getData({
+        query: searchQuery,
+        filter: 'relevance',
+        maxResults: 50
+      });
+    }
+  }, [searchQuery]);
 
   const setFilter = (filter) => {
     if (filter == 'relevance') {
