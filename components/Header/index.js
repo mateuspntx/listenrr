@@ -27,11 +27,7 @@ const Header = ({ children }) => {
       if (value) {
         router.push(`/?q=${value}`);
       } else {
-        radiosList.set(
-          await getRadios({
-            needCache: true
-          })
-        );
+        router.push('/');
       }
 
       isLoading.set(false);
