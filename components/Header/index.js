@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useRef } from 'react';
 
-import { getRadios } from '../../services/api';
 import Input from '../Input';
 import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
 import ThemeSwitcher from '../ThemeSwitcher';
@@ -20,7 +19,7 @@ const Header = ({ children }) => {
 
   const miniplayerData = useContext(MiniplayerContext);
 
-  const { radiosList, isLoading } = miniplayerData;
+  const { isLoading } = miniplayerData;
 
   const debounceFetch = useRef(
     debounce(async (value) => {
