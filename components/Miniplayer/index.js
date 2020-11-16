@@ -35,6 +35,7 @@ const Miniplayer = () => {
   const {
     isShowing,
     isPlaying,
+    isMuted,
     volume,
     radioName,
     radioId,
@@ -66,8 +67,18 @@ const Miniplayer = () => {
   };
 
   const handleMiniplayerVolume = (e) => {
-    MiniplayerLib.setVolume(e.target.value);
-    volume.set(e.target.value);
+    MiniplayerLib.setVolume(e);
+    volume.set(e);
+  };
+
+  const handleMiniplayerMute = () => {
+    if (!isMuted.get) {
+      handleMiniplayerVolume(0);
+      isMuted.set(true);
+    } else {
+      handleMiniplayerVolume(MiniplayerLib.getLocalVolume());
+      isMuted.set(false);
+    }
   };
 
   const handleMiniplayerExternalLink = () => {
@@ -81,6 +92,7 @@ const Miniplayer = () => {
 
   const handleMinimize = () => {
     setExpandMiniplayer(false);
+    router.push('/');
   };
 
   const CloseButton = () => {
@@ -131,15 +143,20 @@ const Miniplayer = () => {
             </Button>
           )}
           <Volume>
-            <img
-              src={volume.get == 0 ? mutedVolumeIcon : volumeIcon}
-              alt="Volume"
-            />
+            <Button onClick={handleMiniplayerMute}>
+              <img
+                src={volume.get == 0 ? mutedVolumeIcon : volumeIcon}
+                alt="Volume"
+              />
+            </Button>
             <SliderContainer>
               <Slider
                 type="range"
-                value={localStorage.getItem('LSTNR_playerVolume') || volume.get}
-                onChange={(e) => handleMiniplayerVolume(e)}
+                value={MiniplayerLib.getLocalVolume() || volume.get}
+                onChange={(e) => {
+                  handleMiniplayerVolume(e.target.value);
+                  MiniplayerLib.setLocalVolume(e.target.value);
+                }}
               />
             </SliderContainer>
           </Volume>
