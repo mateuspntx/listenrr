@@ -98,11 +98,12 @@ export const RadioInfo = styled.div`
 `;
 
 export const SliderContainer = styled.div`
+  position: absolute;
   display: flex;
   height: 25px;
   width: 0px;
+  margin-left: 7px;
   align-items: center;
-  margin-left: -15px;
   background: #252f35;
   padding: 5px 10px;
   border-radius: 3px;
@@ -149,7 +150,7 @@ export const Volume = styled.div`
 
   &:hover ${SliderContainer} {
     transition: opacity 0.5s, width 0.7s, margin-left 0.7s;
-    margin-left: 10px;
+    margin-left: 38px;
     width: 100px;
     opacity: 1;
   }
