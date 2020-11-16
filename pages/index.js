@@ -71,22 +71,7 @@ const Home = () => {
         </Filters>
       </Header>
       <RowContainer>
-        {!isLoading.get ? (
-          radiosList.get.length == 0 ? (
-            <h1 style={{ fontSize: '2rem' }}>
-              Sorry, we didn't find any results :(
-            </h1>
-          ) : (
-            radiosList.get.map((radio) => (
-              <RadioCard
-                key={radio.id.videoId}
-                videoId={radio.id.videoId}
-                coverUrl={radio.snippet.thumbnails.high.url}
-                channelTitle={radio.snippet.channelTitle}
-              />
-            ))
-          )
-        ) : (
+        {isLoading.get && (
           <>
             <RadioCardSkeleton />
             <RadioCardSkeleton />
@@ -98,6 +83,21 @@ const Home = () => {
             <RadioCardSkeleton />
           </>
         )}
+
+        {radiosList.get.length == 0 && (
+          <h1 style={{ fontSize: '2rem' }}>
+            Sorry, we didn't find any results :(
+          </h1>
+        )}
+
+        {radiosList.get.map((radio) => (
+          <RadioCard
+            key={radio.id.videoId}
+            videoId={radio.id.videoId}
+            coverUrl={radio.snippet.thumbnails.high.url}
+            channelTitle={radio.snippet.channelTitle}
+          />
+        ))}
       </RowContainer>
     </AppContainer>
   );
