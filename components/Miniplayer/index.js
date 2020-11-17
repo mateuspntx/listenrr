@@ -178,7 +178,7 @@ const Miniplayer = () => {
           </Button>
         </PlayerActions>
         <ExpandedContainer expandMiniplayer={expandMiniplayer}>
-          <YoutubeIframe showPlayer={expandMiniplayer} />
+          <YoutubeIframe showPlayer={expandMiniplayer} radioId={radioId.get} />
           {expandMiniplayer && <ChatIframe radioId={radioId.get} />}
         </ExpandedContainer>
         {expandMiniplayer && <CloseButton />}
