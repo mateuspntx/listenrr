@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const YoutubeIframe = ({ showPlayer }) => {
+const YoutubeIframe = ({ showPlayer, radioId }) => {
   const IframeStyle = css`
     width: ${showPlayer ? '480px' : '0'};
     height: ${showPlayer ? '600px' : '0'};
@@ -16,6 +16,7 @@ const YoutubeIframe = ({ showPlayer }) => {
   return (
     <>
       <iframe
+        key={radioId}
         id="youtube__iframe"
         title="youtube__iframe"
         type="text/html"
