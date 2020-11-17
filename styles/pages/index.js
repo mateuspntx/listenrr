@@ -63,6 +63,7 @@ const RowContainer = styled.div`
   @media (max-width: 615px) {
     justify-content: center;
     margin: 0;
+    margin-bottom: 5rem;
     grid-gap: 2rem 3%;
   }
 `;
