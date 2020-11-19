@@ -1,11 +1,11 @@
-export default async (req, res) => {
+const getYoutubeRadios = async (req, res) => {
   //Filters API can get = relevance (default), viewCount, videoCount, rating, date, title
   //Max results API can get = 50
 
   const key = process.env.YOUTUBE_API_KEY;
 
   const {
-    query: { q, order, maxResults }
+    query: { q, order, maxResults },
   } = req;
 
   const defaultParams = `part=snippet&videoCategoryId=10&eventType=live&videoEmbeddable=true`;
@@ -22,3 +22,5 @@ export default async (req, res) => {
       .json({ message: "Can't get radios list at this moment" });
   }
 };
+
+export default getYoutubeRadios;

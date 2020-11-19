@@ -1,8 +1,8 @@
-export default async (req, res) => {
+const getYoutubeListeners = async (req, res) => {
   const key = process.env.YOUTUBE_API_KEY;
 
   const {
-    query: { videoId }
+    query: { videoId },
   } = req;
 
   const url = `https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id=${videoId}&fields=items%2FliveStreamingDetails%2FconcurrentViewers&key=${key}`;
@@ -18,3 +18,5 @@ export default async (req, res) => {
       .json({ message: "Can't get listeners count at this moment" });
   }
 };
+
+export default getYoutubeListeners;
