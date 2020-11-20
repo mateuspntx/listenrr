@@ -1,21 +1,19 @@
-import { useContext } from 'react';
+import { memo } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
 import { playIcon } from '../../utils/Icons';
 import ListenersCount from '../ListenersCount';
-import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
+import { useMiniplayer } from '../Miniplayer/MiniplayerContext';
 import { Cover, Label, RadioCardDiv, Title } from './styles';
 
 const RadioCard = ({ coverUrl, channelTitle, videoId, showListenersCount }) => {
-  const miniplayerData = useContext(MiniplayerContext);
-
   const {
     isShowing,
     isPlaying,
     radioName,
     radioId,
-    radioCoverUrl
-  } = miniplayerData;
+    radioCoverUrl,
+  } = useMiniplayer();
 
   const handleMiniplayer = () => {
     radioId.set(videoId);
@@ -45,4 +43,4 @@ const RadioCard = ({ coverUrl, channelTitle, videoId, showListenersCount }) => {
   );
 };
 
-export default RadioCard;
+export default memo(RadioCard);

@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import AppContainer from '../components/AppContainer';
 import Header from '../components/Header';
-import { MiniplayerContext } from '../components/Miniplayer/MiniplayerContext';
+import { useMiniplayer } from '../components/Miniplayer/MiniplayerContext';
 import RadioCard from '../components/RadioCard';
 import RadioCardSkeleton from '../components/Skeletons/RadioCardSkeleton';
 import { getRadios } from '../services/api';
@@ -13,11 +13,9 @@ const Home = () => {
   const router = useRouter();
   const searchQuery = router.query.q;
 
-  const miniplayerData = useContext(MiniplayerContext);
+  const { radiosList, isLoading } = useMiniplayer();
 
   const [activeFilter, setActiveFilter] = useState('trending');
-
-  const { radiosList, isLoading } = miniplayerData;
 
   async function getData(params) {
     isLoading.set(true);
@@ -31,13 +29,13 @@ const Home = () => {
         query: 'lofi',
         filter: 'relevance',
         maxResults: 50,
-        needCache: true
+        needCache: true,
       });
     } else {
       getData({
         query: searchQuery,
         filter: 'relevance',
-        maxResults: 50
+        maxResults: 50,
       });
     }
   }, [searchQuery]);
@@ -46,14 +44,14 @@ const Home = () => {
     if (filter == 'relevance') {
       setActiveFilter('trending');
       getData({
-        needCache: true
+        needCache: true,
       });
     } else {
       setActiveFilter('explore');
       getData({
         query: 'lofi',
         maxResults: 50,
-        filter
+        filter,
       });
     }
   };

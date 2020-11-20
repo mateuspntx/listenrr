@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 export const MiniplayerContext = React.createContext();
 
@@ -26,7 +26,7 @@ export const MiniplayerProvider = ({ children }) => {
     radioName: { get: radioName, set: setRadioName },
     radioCoverUrl: { get: radioCoverUrl, set: setRadioCoverUrl },
     listenersCount: { get: listenersCount, set: setListenersCount },
-    radiosList: { get: radiosList, set: setRadiosList }
+    radiosList: { get: radiosList, set: setRadiosList },
   };
 
   return (
@@ -35,3 +35,5 @@ export const MiniplayerProvider = ({ children }) => {
     </MiniplayerContext.Provider>
   );
 };
+
+export const useMiniplayer = () => useContext(MiniplayerContext);
