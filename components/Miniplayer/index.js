@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
 import {
@@ -9,12 +9,12 @@ import {
   mutedVolumeIcon,
   pauseIcon,
   playIcon,
-  volumeIcon
+  volumeIcon,
 } from '../../utils/Icons';
 import ChatIframe from '../ChatIframe';
 import ListenersCount from '../ListenersCount';
 import YoutubeIframe from '../YoutubeIframe';
-import { MiniplayerContext } from './MiniplayerContext';
+import { useMiniplayer } from './MiniplayerContext';
 import {
   Button,
   Container,
@@ -24,12 +24,12 @@ import {
   Slider,
   SliderContainer,
   Thumb,
-  Volume
+  Volume,
 } from './styles';
 
 const Miniplayer = () => {
   const router = useRouter();
-  const miniplayerData = useContext(MiniplayerContext);
+
   const [expandMiniplayer, setExpandMiniplayer] = useState(false);
 
   const {
@@ -39,8 +39,8 @@ const Miniplayer = () => {
     volume,
     radioName,
     radioId,
-    radioCoverUrl
-  } = miniplayerData;
+    radioCoverUrl,
+  } = useMiniplayer();
 
   useEffect(() => {
     const changeExpandMiniplayer = (url) => {
