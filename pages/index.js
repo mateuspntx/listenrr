@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import AppContainer from '../components/AppContainer';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useMiniplayer } from '../components/Miniplayer/MiniplayerContext';
 import RadioCard from '../components/RadioCard';
@@ -97,6 +98,7 @@ const Home = () => {
           />
         ))}
       </RowContainer>
+      <Footer />
     </AppContainer>
   );
 };
