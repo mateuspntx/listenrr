@@ -10,50 +10,32 @@ import RadioCardSkeleton from '../components/Skeletons/RadioCardSkeleton';
 import { getRadios } from '../services/api';
 import { Filters, RowContainer } from '../styles/pages/index';
 
-const Home = () => {
+const Home = ({ radiosData }) => {
   const router = useRouter();
-  const searchQuery = router.query.q;
 
   const { radiosList, isLoading } = useMiniplayer();
 
   const [activeFilter, setActiveFilter] = useState('trending');
 
-  async function getData(params) {
-    isLoading.set(true);
-    radiosList.set(await getRadios(params));
-    isLoading.set(false);
-  }
-
   useEffect(() => {
-    if (!searchQuery) {
-      getData({
-        query: 'lofi',
-        filter: 'relevance',
-        maxResults: 50,
-        needCache: true,
-      });
-    } else {
-      getData({
-        query: searchQuery,
-        filter: 'relevance',
-        maxResults: 50,
-      });
-    }
-  }, [searchQuery]);
+    isLoading.set(true);
+    radiosList.set(radiosData);
+    isLoading.set(false);
+  }, []);
 
-  const setFilter = (filter) => {
+  const setFilter = async (filter) => {
     if (filter == 'relevance') {
       setActiveFilter('trending');
-      getData({
-        needCache: true,
-      });
+      radiosList.set(radiosData);
     } else {
       setActiveFilter('explore');
-      getData({
-        query: 'lofi',
-        maxResults: 50,
-        filter,
-      });
+      radiosList.set(
+        await getRadios({
+          query: 'lofi',
+          maxResults: 50,
+          filter,
+        })
+      );
     }
   };
 
@@ -70,22 +52,23 @@ const Home = () => {
         </Filters>
       </Header>
       <RowContainer>
-        {isLoading.get && (
-          <>
-            <RadioCardSkeleton />
-            <RadioCardSkeleton />
-            <RadioCardSkeleton />
-            <RadioCardSkeleton />
-            <RadioCardSkeleton />
-            <RadioCardSkeleton />
-            <RadioCardSkeleton />
-            <RadioCardSkeleton />
-          </>
-        )}
+        {router.isFallback ||
+          (isLoading.get && (
+            <>
+              <RadioCardSkeleton />
+              <RadioCardSkeleton />
+              <RadioCardSkeleton />
+              <RadioCardSkeleton />
+              <RadioCardSkeleton />
+              <RadioCardSkeleton />
+              <RadioCardSkeleton />
+              <RadioCardSkeleton />
+            </>
+          ))}
 
         {radiosList.get.length == 0 && (
           <h1 style={{ fontSize: '2rem' }}>
-            Sorry, we didn't find any results :(
+            Sorry, we did not find any results :(
           </h1>
         )}
 
@@ -101,6 +84,21 @@ const Home = () => {
       <Footer />
     </AppContainer>
   );
+};
+
+export const getStaticProps = async () => {
+  const radiosData = await getRadios({
+    query: 'lofi',
+    maxResults: 50,
+    filter: 'relevance',
+  });
+
+  return {
+    props: {
+      radiosData,
+    },
+    revalidate: 60 * 60,
+  };
 };
 
 export default Home;
