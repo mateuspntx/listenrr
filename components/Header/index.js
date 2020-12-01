@@ -1,30 +1,28 @@
 import { debounce } from 'lodash';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
 
 import Input from '../Input';
-import { MiniplayerContext } from '../Miniplayer/MiniplayerContext';
+import { useMiniplayer } from '../Miniplayer/MiniplayerContext';
 import ThemeSwitcher from '../ThemeSwitcher';
 import {
   AboutButton,
   Container,
   LogoText,
   Menu,
-  SearchInputStyles
+  SearchInputStyles,
 } from './styles';
 
 const Header = ({ children }) => {
   const router = useRouter();
 
-  const miniplayerData = useContext(MiniplayerContext);
-
-  const { isLoading } = miniplayerData;
+  const { isLoading } = useMiniplayer();
 
   const debounceFetch = useRef(
-    debounce(async (value) => {
+    debounce((value) => {
       if (value) {
-        router.push(`/?q=${value}`);
+        router.push(`/search/${value}`);
       } else {
         router.push('/');
       }
