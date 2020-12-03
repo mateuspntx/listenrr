@@ -13,15 +13,30 @@ import { Filters, RowContainer } from '../styles/pages/index';
 const Home = ({ radiosData }) => {
   const router = useRouter();
 
+  const searchQuery = router.query.q;
+
   const { radiosList, isLoading } = useMiniplayer();
 
   const [activeFilter, setActiveFilter] = useState('trending');
 
-  useEffect(() => {
+  async function getData(params) {
     isLoading.set(true);
-    radiosList.set(radiosData);
+    radiosList.set(await getRadios(params));
     isLoading.set(false);
-  }, []);
+  }
+
+  useEffect(() => {
+    if (!searchQuery) {
+      radiosList.set(radiosData);
+      isLoading.set(false);
+    } else {
+      getData({
+        query: searchQuery,
+        filter: 'relevance',
+        maxResults: 50,
+      });
+    }
+  }, [searchQuery]);
 
   const setFilter = async (filter) => {
     if (filter == 'relevance') {
@@ -29,13 +44,11 @@ const Home = ({ radiosData }) => {
       radiosList.set(radiosData);
     } else {
       setActiveFilter('explore');
-      radiosList.set(
-        await getRadios({
-          query: 'lofi',
-          maxResults: 50,
-          filter,
-        })
-      );
+      getData({
+        query: 'lofi',
+        maxResults: 50,
+        filter,
+      });
     }
   };
 

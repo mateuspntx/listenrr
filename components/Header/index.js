@@ -22,7 +22,7 @@ const Header = ({ children }) => {
   const debounceFetch = useRef(
     debounce((value) => {
       if (value) {
-        router.push(`/search/${value}`);
+        router.push(`/?q=${value}`);
       } else {
         router.push('/');
       }
