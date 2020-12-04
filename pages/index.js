@@ -10,9 +10,8 @@ import RadioCardSkeleton from '../components/Skeletons/RadioCardSkeleton';
 import { getRadios } from '../services/api';
 import { Filters, RowContainer } from '../styles/pages/index';
 
-const Home = ({ radiosData }) => {
+const Home = ({ radiosListTrending, radiosListExplore }) => {
   const router = useRouter();
-
   const searchQuery = router.query.q;
 
   const { radiosList, isLoading } = useMiniplayer();
@@ -27,7 +26,7 @@ const Home = ({ radiosData }) => {
 
   useEffect(() => {
     if (!searchQuery) {
-      radiosList.set(radiosData);
+      radiosList.set(radiosListTrending);
       isLoading.set(false);
     } else {
       getData({
@@ -38,17 +37,13 @@ const Home = ({ radiosData }) => {
     }
   }, [searchQuery]);
 
-  const setFilter = async (filter) => {
+  const setFilter = (filter) => {
     if (filter == 'relevance') {
       setActiveFilter('trending');
-      radiosList.set(radiosData);
+      radiosList.set(radiosListTrending);
     } else {
       setActiveFilter('explore');
-      getData({
-        query: 'lofi',
-        maxResults: 50,
-        filter,
-      });
+      radiosList.set(radiosListExplore);
     }
   };
 
@@ -100,17 +95,24 @@ const Home = ({ radiosData }) => {
 };
 
 export const getStaticProps = async () => {
-  const radiosData = await getRadios({
+  const radiosListTrending = await getRadios({
     query: 'lofi',
     maxResults: 50,
     filter: 'relevance',
   });
 
+  const radiosListExplore = await getRadios({
+    query: 'lofi',
+    maxResults: 50,
+    filter: 'rating',
+  });
+
   return {
     props: {
-      radiosData,
+      radiosListTrending,
+      radiosListExplore,
     },
-    revalidate: 60 * 60,
+    revalidate: 60 * 60 * 2,
   };
 };
 
