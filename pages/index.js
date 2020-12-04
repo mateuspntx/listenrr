@@ -20,7 +20,7 @@ const Home = ({ radiosListTrending, radiosListExplore }) => {
 
   async function getData(params) {
     isLoading.set(true);
-    radiosList.set(await getRadios(params));
+    radiosList.set((await getRadios(params)) || []);
     isLoading.set(false);
   }
 
@@ -96,17 +96,19 @@ const Home = ({ radiosListTrending, radiosListExplore }) => {
 };
 
 export const getStaticProps = async () => {
-  const radiosListTrending = await getRadios({
-    query: 'lofi',
-    maxResults: 50,
-    filter: 'relevance',
-  });
+  const radiosListTrending =
+    (await getRadios({
+      query: 'lofi',
+      maxResults: 50,
+      filter: 'relevance',
+    })) || [];
 
-  const radiosListExplore = await getRadios({
-    query: 'lofi',
-    maxResults: 50,
-    filter: 'rating',
-  });
+  const radiosListExplore =
+    (await getRadios({
+      query: 'lofi',
+      maxResults: 50,
+      filter: 'rating',
+    })) || [];
 
   return {
     props: {
