@@ -3,7 +3,7 @@ import axios from 'axios';
 import { formatNumber } from '../../utils/formatNumber';
 
 const api = axios.create({
-  baseURL: process.env.VERCEL_URL || process.env.API_BASE_URL,
+  baseURL: process.env.API_BASE_URL,
 });
 
 async function getRadios(params) {
