@@ -86,6 +86,7 @@ const Home = ({ radiosListTrending, radiosListExplore }) => {
             videoId={radio.id.videoId}
             coverUrl={radio.snippet.thumbnails.high.url}
             channelTitle={radio.snippet.channelTitle}
+            videoTitle={radio.snippet.title}
           />
         ))}
       </RowContainer>
