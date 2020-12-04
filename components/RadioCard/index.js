@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { memo } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
@@ -48,6 +49,14 @@ const RadioCard = ({
       </Label>
     </RadioCardDiv>
   );
+};
+
+RadioCard.propTypes = {
+  coverUrl: PropTypes.string.isRequired,
+  videoId: PropTypes.string.isRequired,
+  channelTitle: PropTypes.string.isRequired,
+  videoTitle: PropTypes.string,
+  showListenersCount: PropTypes.bool,
 };
 
 export default memo(RadioCard);
