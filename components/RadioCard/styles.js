@@ -44,6 +44,9 @@ export const Title = styled.h1`
   font-weight: 500;
   transition: color 0.5s;
   color: ${(props) => props.theme.colors.primary};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (max-width: 615px) {
     margin-top: 0.5rem;
@@ -60,7 +63,16 @@ export const Label = styled.h2`
   font-size: 1.1rem;
   margin-top: -3px;
   font-weight: 300;
+  width: 270px;
   color: ${(props) => props.theme.colors.secondary};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 615px) {
+    width: 100px;
+    font-size: 0.7rem;
+  }
 `;
 
 export const RadioCardDiv = styled.div`
