@@ -87,12 +87,20 @@ const Miniplayer = () => {
 
   const handleExpand = () => {
     setExpandMiniplayer(true);
-    router.push('/', '?expandMiniplayer');
+
+    if (router.pathname === '') {
+      router.push('/', '?expandMiniplayer', {
+        shallow: true,
+      });
+    } else {
+      router.push(`/${window.location.search}`, '?expandMiniplayer', {
+        shallow: true,
+      });
+    }
   };
 
   const handleMinimize = () => {
     setExpandMiniplayer(false);
-    router.push('/');
   };
 
   const CloseButton = () => {
