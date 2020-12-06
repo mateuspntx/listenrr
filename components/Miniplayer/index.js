@@ -101,6 +101,7 @@ const Miniplayer = () => {
 
   const handleMinimize = () => {
     setExpandMiniplayer(false);
+    router.back();
   };
 
   const CloseButton = () => {
