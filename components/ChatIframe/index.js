@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { css } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 
@@ -24,6 +25,10 @@ const ChatIframe = ({ radioId }) => {
       frameBorder="0"
     ></iframe>
   );
+};
+
+ChatIframe.propTypes = {
+  radioId: PropTypes.string.isRequired,
 };
 
 export default ChatIframe;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { css } from 'styled-components';
 
 const YoutubeIframe = ({ showPlayer, radioId }) => {
@@ -26,6 +27,11 @@ const YoutubeIframe = ({ showPlayer, radioId }) => {
       ></iframe>
     </>
   );
+};
+
+YoutubeIframe.propTypes = {
+  showPlayer: PropTypes.bool.isRequired,
+  radioId: PropTypes.string.isRequired,
 };
 
 export default YoutubeIframe;

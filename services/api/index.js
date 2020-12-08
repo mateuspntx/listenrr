@@ -3,23 +3,12 @@ import axios from 'axios';
 import { formatNumber } from '../../utils/formatNumber';
 
 const api = axios.create({
-  baseURL: process.env.VERCEL_URL || process.env.API_BASE_URL
+  baseURL: process.env.API_BASE_URL,
 });
 
-const LOCAL_STORAGE_NAME = 'LSTNR_cachedRadiosList';
-const LOCAL_STORAGE_DATE = 'LSTNR_Date';
-
 async function getRadios(params) {
-  const { query, filter, maxResults, needCache } = params;
+  const { query, filter, maxResults } = params;
 
-  if (needCache) {
-    return getCache(query, filter, maxResults);
-  }
-
-  return getData(query, filter, maxResults);
-}
-
-async function getData(query, filter, maxResults) {
   let radiosList;
 
   await api
@@ -31,27 +20,6 @@ async function getData(query, filter, maxResults) {
     });
 
   return radiosList;
-}
-
-async function getCache(query, filter, maxResults) {
-  let radiosList;
-
-  const date = new Date();
-  const todayDate = date.getDate();
-
-  if (
-    !localStorage.getItem(LOCAL_STORAGE_DATE) ||
-    localStorage.getItem(LOCAL_STORAGE_DATE) != todayDate
-  ) {
-    radiosList = await getData(query, filter, maxResults);
-
-    localStorage.setItem(LOCAL_STORAGE_DATE, todayDate);
-    localStorage.setItem(LOCAL_STORAGE_NAME, JSON.stringify(radiosList));
-
-    return radiosList;
-  } else {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_NAME));
-  }
 }
 
 async function getListenersCount(radioId) {

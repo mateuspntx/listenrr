@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { memo } from 'react';
 
 import MiniplayerLib from '../../libs/MiniplayerLib';
@@ -6,7 +7,13 @@ import ListenersCount from '../ListenersCount';
 import { useMiniplayer } from '../Miniplayer/MiniplayerContext';
 import { Cover, Label, RadioCardDiv, Title } from './styles';
 
-const RadioCard = ({ coverUrl, channelTitle, videoId, showListenersCount }) => {
+const RadioCard = ({
+  coverUrl,
+  channelTitle,
+  videoId,
+  showListenersCount,
+  videoTitle,
+}) => {
   const {
     isShowing,
     isPlaying,
@@ -30,6 +37,7 @@ const RadioCard = ({ coverUrl, channelTitle, videoId, showListenersCount }) => {
         <img src={playIcon} alt="Play" />
       </Cover>
       <Title>{channelTitle}</Title>
+      <Label>{videoTitle}</Label>
       <Label>
         {showListenersCount ? (
           <>
@@ -41,6 +49,14 @@ const RadioCard = ({ coverUrl, channelTitle, videoId, showListenersCount }) => {
       </Label>
     </RadioCardDiv>
   );
+};
+
+RadioCard.propTypes = {
+  coverUrl: PropTypes.string.isRequired,
+  videoId: PropTypes.string.isRequired,
+  channelTitle: PropTypes.string.isRequired,
+  videoTitle: PropTypes.string,
+  showListenersCount: PropTypes.bool,
 };
 
 export default memo(RadioCard);

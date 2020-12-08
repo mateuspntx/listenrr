@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import { getListenersCount } from '../../services/api';
@@ -21,6 +22,11 @@ const ListenersCount = ({ videoId, showMessage }) => {
       {listenersCount} {showMessage ? 'people listening now' : ''}
     </>
   );
+};
+
+ListenersCount.propTypes = {
+  videoId: PropTypes.string.isRequired,
+  showMessage: PropTypes.bool,
 };
 
 export default ListenersCount;
