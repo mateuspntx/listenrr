@@ -6,6 +6,14 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 3rem;
+
+  a {
+    margin-bottom: 1rem;
+    text-decoration: none;
+    border-bottom: 2px solid;
+    color: #5b727f;
+    text-shadow: 0px 0px 10px #5b727faa;
+  }
 `;
 
 export const AboutHeader = styled.div`
@@ -27,13 +35,5 @@ export const Info = styled.div`
     display: flex;
     padding: 1rem;
     flex-wrap: wrap;
-
-    a {
-      margin-bottom: 1rem;
-      text-decoration: none;
-      border-bottom: 2px solid;
-      color: #5b727f;
-      text-shadow: 0px 0px 10px #5b727faa;
-    }
   }
 `;
