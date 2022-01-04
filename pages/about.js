@@ -10,14 +10,14 @@ const About = () => {
         <AboutHeader>About Listenrr</AboutHeader>
         <Info>
           <p>
-            Listenrr was created in 2017 in Vanilla JS and is now, in 2020,
-            rebuilt in Next.js (ReactJS).
+            Listenrr was created in 2017 in Vanilla JS and was rebuilt with
+            Next.js in 2020.
           </p>
           <br />
           <p>
-            I started to create this app because I started studying Javascript.
-            I was listening to some lofi livestream on Youtube and the idea
-            popped in my mind.
+            I developed this app because I started studying Javascript at that
+            time. While studying, I used to listen to some lo-fi music
+            livestream on YouTube and the idea popped in my mind.
           </p>
           <br />
           <p>
@@ -26,17 +26,14 @@ const About = () => {
           </p>
           <p>
             <br />
-            The idea, development and UI was completely done by Mateus Pontes,
-            the owner of this app.
+            The idea, development and UI was completely done by me. Check out my{' '}
+            <a href="https://github.com/mateuspntx">GitHub</a> profile.
           </p>
           <div className="footer">
-            <a href="https://mateuspntx.ml/">Mateus's website</a>
-            <br />
-            <a href="https://github.com/mateuspntx">Mateus's Github profile</a>
-            <br />
-            <a href="https://www.linkedin.com/in/mateuspntx/">
-              Mateus's LinkedIn profile
-            </a>
+            <p>
+              If you have any questions, please send an email to{' '}
+              <a href="mailto:hello@listenrr.ml">hello@listenrr.ml</a>
+            </p>
           </div>
         </Info>
       </Container>
